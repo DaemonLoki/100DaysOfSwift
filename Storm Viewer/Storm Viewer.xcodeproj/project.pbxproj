@@ -22,6 +22,7 @@
 		ACE2BEB32250EE66003FAC62 /* nssl0043.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ACE2BEA92250EE66003FAC62 /* nssl0043.jpg */; };
 		ACE2BEB42250EE66003FAC62 /* nssl0033.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ACE2BEAA2250EE66003FAC62 /* nssl0033.jpg */; };
 		ACE2BEB52250EE66003FAC62 /* nssl0034.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ACE2BEAB2250EE66003FAC62 /* nssl0034.jpg */; };
+		ACE2BEB722515B2E003FAC62 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE2BEB622515B2E003FAC62 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		ACE2BEA92250EE66003FAC62 /* nssl0043.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0043.jpg; sourceTree = "<group>"; };
 		ACE2BEAA2250EE66003FAC62 /* nssl0033.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0033.jpg; sourceTree = "<group>"; };
 		ACE2BEAB2250EE66003FAC62 /* nssl0034.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0034.jpg; sourceTree = "<group>"; };
+		ACE2BEB622515B2E003FAC62 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			children = (
 				ACE2BE8F2250EC3B003FAC62 /* AppDelegate.swift */,
 				ACE2BE912250EC3B003FAC62 /* ViewController.swift */,
+				ACE2BEB622515B2E003FAC62 /* DetailViewController.swift */,
 				ACE2BE932250EC3B003FAC62 /* Main.storyboard */,
 				ACE2BE962250EC3D003FAC62 /* Assets.xcassets */,
 				ACE2BE982250EC3D003FAC62 /* LaunchScreen.storyboard */,
@@ -183,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE2BEB722515B2E003FAC62 /* DetailViewController.swift in Sources */,
 				ACE2BE922250EC3B003FAC62 /* ViewController.swift in Sources */,
 				ACE2BE902250EC3B003FAC62 /* AppDelegate.swift in Sources */,
 			);
