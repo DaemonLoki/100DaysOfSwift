@@ -39,14 +39,30 @@
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vXv-Z2-Bct"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question 1 of 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xf-m5-RVS">
+                                <rect key="frame" x="126.5" y="482" width="161.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCW-Ah-jXd">
+                                <rect key="frame" x="144" y="527.5" width="126.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="VCW-Ah-jXd" firstAttribute="top" secondItem="5xf-m5-RVS" secondAttribute="bottom" constant="19" id="2z7-Z7-0D9"/>
+                            <constraint firstItem="5xf-m5-RVS" firstAttribute="top" secondItem="P83-Qp-uSv" secondAttribute="bottom" constant="22" id="3fO-jr-xPE"/>
+                            <constraint firstItem="VCW-Ah-jXd" firstAttribute="centerX" secondItem="5xf-m5-RVS" secondAttribute="centerX" id="JSM-Lb-qT5"/>
                             <constraint firstItem="4WS-cv-JLH" firstAttribute="top" secondItem="Lts-8Q-BSd" secondAttribute="bottom" constant="30" id="Jaz-S7-rSO"/>
                             <constraint firstItem="P83-Qp-uSv" firstAttribute="top" secondItem="4WS-cv-JLH" secondAttribute="bottom" constant="30" id="Xx0-uo-i0O"/>
                             <constraint firstItem="P83-Qp-uSv" firstAttribute="centerX" secondItem="4WS-cv-JLH" secondAttribute="centerX" id="cBf-YN-p4F"/>
                             <constraint firstItem="Lts-8Q-BSd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gIg-of-Ybw"/>
                             <constraint firstItem="4WS-cv-JLH" firstAttribute="centerX" secondItem="Lts-8Q-BSd" secondAttribute="centerX" id="hUr-hb-JiP"/>
+                            <constraint firstItem="5xf-m5-RVS" firstAttribute="centerX" secondItem="P83-Qp-uSv" secondAttribute="centerX" id="jI7-RW-TDj"/>
                             <constraint firstItem="Lts-8Q-BSd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="xij-JC-oKk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -56,11 +72,13 @@
                         <outlet property="button1" destination="Lts-8Q-BSd" id="z6y-wI-Vh5"/>
                         <outlet property="button2" destination="4WS-cv-JLH" id="o0w-D5-fYq"/>
                         <outlet property="button3" destination="P83-Qp-uSv" id="JDc-Bc-q21"/>
+                        <outlet property="questionLabel" destination="5xf-m5-RVS" id="BNa-ki-gF9"/>
+                        <outlet property="scoreLabel" destination="VCW-Ah-jXd" id="97S-QQ-xc4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="978" y="747"/>
+            <point key="canvasLocation" x="976.81159420289862" y="746.65178571428567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5RI-Ff-2cD">
