@@ -40,13 +40,24 @@ class ViewController: UITableViewController {
         let imagePath = countries[indexPath.row]
         cell.imageView?.image = UIImage(named: imagePath + ".png")
         cell.imageView?.layer.borderWidth = 1
-        cell.imageView?.layer.borderColor = UIColor.lightGray.cgColor
+        let colorValue: CGFloat = 241.0/255.0
+        cell.imageView?.layer.borderColor = UIColor(red: colorValue, green: colorValue, blue: colorValue, alpha: 1.0).cgColor
         cell.imageView?.layer.cornerRadius = 3.0
         cell.imageView?.clipsToBounds = true
         
         // set text
         cell.textLabel?.text = imagePath.uppercased()
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController else {
+            print("Error!")
+            return
+        }
+        
+        vc.country = countries[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 
