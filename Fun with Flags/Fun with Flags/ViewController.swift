@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UITableViewController {
     
-    var countries = [String]()
+    var flags = [Flag]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,17 +18,31 @@ class ViewController: UITableViewController {
         title = "Fun with Flags"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        /* load from json later
-        let fm = FileManager.default
-        let path = Bundle.main.resourcePath!
-        let items = try! fm.contentsOfDirectory(atPath: path)
-        */
+        guard let path = Bundle.main.path(forResource: "flag-data", ofType: "json") else {
+            print("Couldn't find flag data!")
+            return
+        }
         
+        let flagFileURL = URL(fileURLWithPath: path)
+        guard let data = try? Data(contentsOf: flagFileURL) else {
+            print("Data could not be loaded from URL")
+            return
+        }
+        let decoder = JSONDecoder()
+        
+        do {
+            flags = try decoder.decode([Flag].self, from: data)
+        } catch {
+            print("Error during decoding of Flag file")
+        }
+    
+        /*
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
+        */
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countries.count
+        return flags.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,8 +51,8 @@ class ViewController: UITableViewController {
         }
         
         // set image
-        let imagePath = countries[indexPath.row]
-        cell.imageView?.image = UIImage(named: imagePath + ".png")
+        let flag = flags[indexPath.row]
+        cell.imageView?.image = UIImage(named: flag.path + ".png")
         cell.imageView?.layer.borderWidth = 1
         let colorValue: CGFloat = 241.0/255.0
         cell.imageView?.layer.borderColor = UIColor(red: colorValue, green: colorValue, blue: colorValue, alpha: 1.0).cgColor
@@ -46,7 +60,7 @@ class ViewController: UITableViewController {
         cell.imageView?.clipsToBounds = true
         
         // set text
-        cell.textLabel?.text = imagePath.uppercased()
+        cell.textLabel?.text = flag.name
         return cell
     }
     
@@ -56,7 +70,7 @@ class ViewController: UITableViewController {
             return
         }
         
-        vc.country = countries[indexPath.row]
+        vc.country = flags[indexPath.row].name
         navigationController?.pushViewController(vc, animated: true)
     }
 

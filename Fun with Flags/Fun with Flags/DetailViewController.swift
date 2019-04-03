@@ -20,7 +20,7 @@ class DetailViewController: UIViewController {
         title = country?.uppercased() ?? "Flag"
         
         if let country = country {
-            imageView.image = UIImage(named: country)
+            imageView.image = UIImage(named: country.lowercased())
         }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareClicked))

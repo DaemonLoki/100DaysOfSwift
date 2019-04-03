@@ -13,6 +13,8 @@
 		AC14DBA42254BFE000233269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC14DBA32254BFE000233269 /* Assets.xcassets */; };
 		AC14DBA72254BFE000233269 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC14DBA52254BFE000233269 /* LaunchScreen.storyboard */; };
 		AC14DBAF2254C90B00233269 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC14DBAE2254C90B00233269 /* DetailViewController.swift */; };
+		AC14DBB222550B2000233269 /* flag-data.json in Resources */ = {isa = PBXBuildFile; fileRef = AC14DBB122550B2000233269 /* flag-data.json */; };
+		AC14DBB422550B3E00233269 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC14DBB322550B3E00233269 /* Flag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		AC14DBA62254BFE000233269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC14DBA82254BFE000233269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC14DBAE2254C90B00233269 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AC14DBB122550B2000233269 /* flag-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "flag-data.json"; sourceTree = "<group>"; };
+		AC14DBB322550B3E00233269 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +65,20 @@
 				AC14DBAE2254C90B00233269 /* DetailViewController.swift */,
 				AC14DBA02254BFDF00233269 /* Main.storyboard */,
 				AC14DBA32254BFE000233269 /* Assets.xcassets */,
+				AC14DBB022550B2000233269 /* Content */,
 				AC14DBA52254BFE000233269 /* LaunchScreen.storyboard */,
 				AC14DBA82254BFE000233269 /* Info.plist */,
+				AC14DBB322550B3E00233269 /* Flag.swift */,
 			);
 			path = "Fun with Flags";
+			sourceTree = "<group>";
+		};
+		AC14DBB022550B2000233269 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				AC14DBB122550B2000233269 /* flag-data.json */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +142,7 @@
 				AC14DBA72254BFE000233269 /* LaunchScreen.storyboard in Resources */,
 				AC14DBA42254BFE000233269 /* Assets.xcassets in Resources */,
 				AC14DBA22254BFDF00233269 /* Main.storyboard in Resources */,
+				AC14DBB222550B2000233269 /* flag-data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +156,7 @@
 				AC14DBAF2254C90B00233269 /* DetailViewController.swift in Sources */,
 				AC14DB9F2254BFDF00233269 /* ViewController.swift in Sources */,
 				AC14DB9D2254BFDF00233269 /* AppDelegate.swift in Sources */,
+				AC14DBB422550B3E00233269 /* Flag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

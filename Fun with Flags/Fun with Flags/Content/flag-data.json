@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Estonia",
+        "path": "estonia"
+    },
+    {
+        "name": "France",
+        "path": "france"
+    },
+    {
+        "name": "Germany",
+        "path": "germany"
+    },
+    {
+        "name": "Ireland",
+        "path": "ireland"
+    },
+    {
+        "name": "Italy",
+        "path": "italy"
+    },
+    {
+        "name": "Monaco",
+        "path": "monaco"
+    },
+    {
+        "name": "Nigeria",
+        "path": "nigeria"
+    },
+    {
+        "name": "Poland",
+        "path": "poland"
+    },
+    {
+        "name": "Russia",
+        "path": "russia"
+    },
+    {
+        "name": "Spain",
+        "path": "spain"
+    },
+    {
+        "name": "UK",
+        "path": "uk"
+    },
+    {
+        "name": "US",
+        "path": "us"
+    }
+]
