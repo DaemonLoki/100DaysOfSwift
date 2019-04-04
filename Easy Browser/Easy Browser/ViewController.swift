@@ -31,9 +31,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let progressButton = UIBarButtonItem(customView: progressView)
         
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let backward = UIBarButtonItem(title: "Back", style: .plain, target: webView, action: #selector(webView.goBack))
+        let forward = UIBarButtonItem(title: "Forward", style: .plain, target: webView, action: #selector(webView.goForward))
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
         
-        toolbarItems = [progressButton,     spacer, refresh]
+        toolbarItems = [progressButton, spacer, backward, forward, refresh]
         navigationController?.isToolbarHidden = false
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
@@ -70,7 +72,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
                 }
             }
         }
-        decisionHandler(.cancel)
+        
+        let ac = UIAlertController(title: "Sorry", message: "Your are not allowed to open this page!", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            decisionHandler(.cancel)
+        }))
+        present(ac, animated: true)
     }
     
     func openPage(action: UIAlertAction) {
