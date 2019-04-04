@@ -12,6 +12,7 @@
 		AC165A262255F4400087A9BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC165A242255F4400087A9BD /* Main.storyboard */; };
 		AC165A282255F4410087A9BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC165A272255F4410087A9BD /* Assets.xcassets */; };
 		AC165A2B2255F4410087A9BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC165A292255F4410087A9BD /* LaunchScreen.storyboard */; };
+		AC43EC022256AB2800A3B068 /* WebsitesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC43EC012256AB2800A3B068 /* WebsitesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		AC165A272255F4410087A9BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC165A2A2255F4410087A9BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC165A2C2255F4410087A9BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC43EC012256AB2800A3B068 /* WebsitesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsitesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				AC165A202255F4400087A9BD /* AppDelegate.swift */,
 				AC165A222255F4400087A9BD /* ViewController.swift */,
 				AC165A242255F4400087A9BD /* Main.storyboard */,
+				AC43EC012256AB2800A3B068 /* WebsitesTableViewController.swift */,
 				AC165A272255F4410087A9BD /* Assets.xcassets */,
 				AC165A292255F4410087A9BD /* LaunchScreen.storyboard */,
 				AC165A2C2255F4410087A9BD /* Info.plist */,
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC165A232255F4400087A9BD /* ViewController.swift in Sources */,
+				AC43EC022256AB2800A3B068 /* WebsitesTableViewController.swift in Sources */,
 				AC165A212255F4400087A9BD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

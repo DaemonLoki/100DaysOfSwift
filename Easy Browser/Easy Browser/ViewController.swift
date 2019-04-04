@@ -13,7 +13,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
     var progressView: UIProgressView!
-    var websites = ["apple.com", "hackingwithswift.com"]
+    var website: String?
+    var websites: [String]?
     
     override func loadView() {
         webView = WKWebView()
@@ -40,8 +41,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
-        let url = URL(string: "https://" + websites[0])!
-        webView.load(URLRequest(url: url))
+        if let website = website {
+            let url = URL(string: "https://" + website)!
+            webView.load(URLRequest(url: url))
+        }
         webView.allowsBackForwardNavigationGestures = true
     }
     
@@ -53,8 +56,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     @objc func openTapped() {
         let ac = UIAlertController(title: "Open page:", message: nil, preferredStyle: .actionSheet)
-        for website in websites {
-            ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
+        if let websites = websites {
+            for website in websites {
+                ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
+            }
         }
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         ac.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
@@ -65,10 +70,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let url = navigationAction.request.url
         
         if let host = url?.host {
-            for website in websites {
-                if host.contains(website) {
-                    decisionHandler(.allow)
-                    return
+            if let websites = websites {
+                for website in websites {
+                    if host.contains(website) {
+                        decisionHandler(.allow)
+                        return
+                    }
                 }
             }
         }
