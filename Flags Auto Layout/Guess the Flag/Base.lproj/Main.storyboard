@@ -20,6 +20,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lts-8Q-BSd">
                                 <rect key="frame" x="107" y="100" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Lts-8Q-BSd" secondAttribute="height" multiplier="2:1" id="GoD-3d-HpP"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nLH-Dd-fc2"/>
@@ -27,6 +30,9 @@
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4WS-cv-JLH">
                                 <rect key="frame" x="107" y="230" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4WS-cv-JLH" secondAttribute="height" multiplier="2:1" id="c4E-OM-06G"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SsV-1a-9tP"/>
@@ -34,6 +40,9 @@
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P83-Qp-uSv">
                                 <rect key="frame" x="107" y="360" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="P83-Qp-uSv" secondAttribute="height" multiplier="2:1" id="t9m-ed-yKE"/>
+                                </constraints>
                                 <state key="normal" image="us"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vXv-Z2-Bct"/>
@@ -56,8 +65,11 @@
                         <constraints>
                             <constraint firstItem="VCW-Ah-jXd" firstAttribute="top" secondItem="5xf-m5-RVS" secondAttribute="bottom" constant="19" id="2z7-Z7-0D9"/>
                             <constraint firstItem="5xf-m5-RVS" firstAttribute="top" secondItem="P83-Qp-uSv" secondAttribute="bottom" constant="22" id="3fO-jr-xPE"/>
+                            <constraint firstItem="4WS-cv-JLH" firstAttribute="height" secondItem="Lts-8Q-BSd" secondAttribute="height" id="71r-o6-rYr"/>
                             <constraint firstItem="VCW-Ah-jXd" firstAttribute="centerX" secondItem="5xf-m5-RVS" secondAttribute="centerX" id="JSM-Lb-qT5"/>
                             <constraint firstItem="4WS-cv-JLH" firstAttribute="top" secondItem="Lts-8Q-BSd" secondAttribute="bottom" constant="30" id="Jaz-S7-rSO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="P83-Qp-uSv" secondAttribute="bottom" constant="20" id="VLS-7v-MuO"/>
+                            <constraint firstItem="P83-Qp-uSv" firstAttribute="height" secondItem="4WS-cv-JLH" secondAttribute="height" id="WQy-aF-5Ae"/>
                             <constraint firstItem="P83-Qp-uSv" firstAttribute="top" secondItem="4WS-cv-JLH" secondAttribute="bottom" constant="30" id="Xx0-uo-i0O"/>
                             <constraint firstItem="P83-Qp-uSv" firstAttribute="centerX" secondItem="4WS-cv-JLH" secondAttribute="centerX" id="cBf-YN-p4F"/>
                             <constraint firstItem="Lts-8Q-BSd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gIg-of-Ybw"/>
