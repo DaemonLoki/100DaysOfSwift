@@ -51,14 +51,18 @@ class ViewController: UIViewController {
         
         var previous: UILabel?
         
-        for label in [label1, label2, label3, label4, label5] {
-            label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-            label.heightAnchor.constraint(equalToConstant: 88).isActive = true
+        let labels = [label1, label2, label3, label4, label5]
+        let spaceInBetween: CGFloat = 10.0
+        
+        for label in labels {
+            label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: spaceInBetween).isActive = true
+            label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -spaceInBetween).isActive = true
+            label.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 1.0/CGFloat(labels.count), constant: -spaceInBetween).isActive = true
             
             if let previous = previous {
-                label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: 10).isActive = true
+                label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: spaceInBetween).isActive = true
             } else {
-                label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+                label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: spaceInBetween).isActive = true
             }
             
             previous = label
