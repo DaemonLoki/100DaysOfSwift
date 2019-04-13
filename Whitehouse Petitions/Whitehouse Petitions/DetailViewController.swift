@@ -22,16 +22,20 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Details"
         guard let detailItem = detailItem else { return }
         
         let html = """
         <html>
         <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style> body { font-size: 150%; } </style>
+        <style> body { font-size: 150%; padding: 1em } </style>
         </head>
         <body>
-        \(detailItem.body)
+        <h3>\(detailItem.title)</h3>
+        <p>\(detailItem.body)</p>
+        <h4>Signatures:</h4>
+        <p>\(detailItem.signatureCount) / \(detailItem.signatureThreshold)</p>
         </body>
         </html>
         """

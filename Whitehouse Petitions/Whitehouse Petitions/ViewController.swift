@@ -20,11 +20,11 @@ class ViewController: UITableViewController {
         title = "Petitions"
             
         if navigationController?.tabBarItem.tag == 0 {
-            // let urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
-            urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+            urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
+            //urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
         } else {
-            // urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
-            urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
+            urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
+            //urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
         }
         
         navigationItem.rightBarButtonItems =
@@ -68,7 +68,8 @@ class ViewController: UITableViewController {
     }
     
     func performSearchFor(term: String) {
-        shownPetitions = allPetitions.filter( {$0.title.contains(term) || $0.body.contains(term) } )
+        let lowerTerm = term.lowercased()
+        shownPetitions = allPetitions.filter( {$0.title.lowercased().contains(lowerTerm) || $0.body.lowercased().contains(lowerTerm) } )
         tableView.reloadData()
     }
     
