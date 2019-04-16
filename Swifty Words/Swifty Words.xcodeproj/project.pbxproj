@@ -12,6 +12,8 @@
 		AC77CDEC2263469B0019B943 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC77CDEA2263469B0019B943 /* Main.storyboard */; };
 		AC77CDEE2263469B0019B943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC77CDED2263469B0019B943 /* Assets.xcassets */; };
 		AC77CDF12263469B0019B943 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC77CDEF2263469B0019B943 /* LaunchScreen.storyboard */; };
+		ACF6315E22652A1A00EB6E08 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = ACF6315C22652A1A00EB6E08 /* level2.txt */; };
+		ACF6315F22652A1A00EB6E08 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = ACF6315D22652A1A00EB6E08 /* level1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		AC77CDED2263469B0019B943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC77CDF02263469B0019B943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC77CDF22263469B0019B943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACF6315C22652A1A00EB6E08 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
+		ACF6315D22652A1A00EB6E08 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +62,20 @@
 				AC77CDE82263469B0019B943 /* ViewController.swift */,
 				AC77CDEA2263469B0019B943 /* Main.storyboard */,
 				AC77CDED2263469B0019B943 /* Assets.xcassets */,
+				ACF6315B22652A1A00EB6E08 /* Content */,
 				AC77CDEF2263469B0019B943 /* LaunchScreen.storyboard */,
 				AC77CDF22263469B0019B943 /* Info.plist */,
 			);
 			path = "Swifty Words";
+			sourceTree = "<group>";
+		};
+		ACF6315B22652A1A00EB6E08 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				ACF6315C22652A1A00EB6E08 /* level2.txt */,
+				ACF6315D22652A1A00EB6E08 /* level1.txt */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,8 +136,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACF6315F22652A1A00EB6E08 /* level1.txt in Resources */,
 				AC77CDF12263469B0019B943 /* LaunchScreen.storyboard in Resources */,
 				AC77CDEE2263469B0019B943 /* Assets.xcassets in Resources */,
+				ACF6315E22652A1A00EB6E08 /* level2.txt in Resources */,
 				AC77CDEC2263469B0019B943 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
