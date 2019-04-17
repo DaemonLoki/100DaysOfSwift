@@ -57,7 +57,7 @@ class ViewController: UITableViewController {
             guard let searchTerm = ac?.textFields?[0].text else {
                 return
             }
-            self?.performSearchFor(term: searchTerm)
+            self?.performSelector(inBackground: #selector(self?.performSearchFor(term:)), with: searchTerm)
         }))
         present(ac, animated: true)
     }
@@ -73,10 +73,11 @@ class ViewController: UITableViewController {
         present(ac, animated: true)
     }
     
-    func performSearchFor(term: String) {
+    @objc func performSearchFor(term: String) {
+        print("Performing search for \(term) on thread: \(Thread.current)")
         let lowerTerm = term.lowercased()
         shownPetitions = allPetitions.filter( {$0.title.lowercased().contains(lowerTerm) || $0.body.lowercased().contains(lowerTerm) } )
-        tableView.reloadData()
+        tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
     }
     
     @objc func showError() {
