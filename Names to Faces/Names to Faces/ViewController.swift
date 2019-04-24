@@ -54,6 +54,29 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let person = people[indexPath.item]
         
+        let ac = UIAlertController(title: "What do you want to do?", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Rename person", style: .default, handler: { [weak self, weak person] (action) in
+            if let person = person {
+                self?.showRenameAlertController(for: person, at: indexPath)
+            }
+        }))
+        ac.addAction(UIAlertAction(title: "Delete person", style: .destructive, handler: { [weak self] (action) in
+            self?.removePerson(at: indexPath)
+        }))
+        present(ac, animated: true)
+    }
+    
+    func removePerson(at indexPath: IndexPath) {
+        let person = people.remove(at: indexPath.item)
+        collectionView.deleteItems(at: [indexPath])
+        
+        let ac = UIAlertController(title: "Success", message: "\(person.name) was removed!", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        present(ac, animated: true)
+    }
+    
+    func showRenameAlertController(for person: Person, at path: IndexPath) {
         let ac = UIAlertController(title: "Change name:", message: nil, preferredStyle: .alert)
         ac.addTextField()
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -61,7 +84,7 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self, weak person] (action) in
             guard let name = ac.textFields?[0].text else { return }
             person?.name = name
-            self?.collectionView.reloadItems(at: [indexPath])
+            self?.collectionView.reloadItems(at: [path])
         }))
         
         
