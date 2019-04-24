@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class ViewController: UICollectionViewController {
     
     var pictures = [String]()
 
@@ -33,10 +33,35 @@ class ViewController: UITableViewController {
             self?.pictures.sort()
             
             DispatchQueue.main.async { [weak self] in
-                self?.tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+                //self?.tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+                self?.collectionView.performSelector(onMainThread: #selector(UICollectionView.reloadData), with: nil, waitUntilDone: false)
             }
         }
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pictures.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PictureCell", for: indexPath) as? PictureCell else {
+            fatalError("Unable to dequeue PictureCell.")
+        }
+        cell.imageName.text = pictures[indexPath.row]
+        cell.imageView.image = UIImage(named: pictures[indexPath.row])
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            detailVC.selectedImage = pictures[indexPath.row]
+            detailVC.imagePosition = indexPath.row + 1
+            detailVC.numberOfImages = pictures.count
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+    
+    /* Comment out UITableView code because we temporarily migrated it to UICollectionView
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pictures.count
@@ -56,6 +81,8 @@ class ViewController: UITableViewController {
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
+ 
+     */
 
     @objc func recommendApp() {
         let recommendation = "Who doesn't like storms? If you're like me, this app will take your heart by storm! Please download it and help it storm to the top of the app charts!"

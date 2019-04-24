@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC875EAC22711CFF002F483A /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC875EAB22711CFF002F483A /* PictureCell.swift */; };
 		ACE2BE902250EC3B003FAC62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE2BE8F2250EC3B003FAC62 /* AppDelegate.swift */; };
 		ACE2BE922250EC3B003FAC62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE2BE912250EC3B003FAC62 /* ViewController.swift */; };
 		ACE2BE952250EC3B003FAC62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACE2BE932250EC3B003FAC62 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC875EAB22711CFF002F483A /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		ACE2BE8C2250EC3B003FAC62 /* Storm Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Storm Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE2BE8F2250EC3B003FAC62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE2BE912250EC3B003FAC62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				ACE2BE982250EC3D003FAC62 /* LaunchScreen.storyboard */,
 				ACE2BE9B2250EC3D003FAC62 /* Info.plist */,
 				ACE2BEA12250EE66003FAC62 /* Content */,
+				AC875EAB22711CFF002F483A /* PictureCell.swift */,
 			);
 			path = "Storm Viewer";
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC875EAC22711CFF002F483A /* PictureCell.swift in Sources */,
 				ACE2BEB722515B2E003FAC62 /* DetailViewController.swift in Sources */,
 				ACE2BE922250EC3B003FAC62 /* ViewController.swift in Sources */,
 				ACE2BE902250EC3B003FAC62 /* AppDelegate.swift in Sources */,
