@@ -19,10 +19,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     var scoreLabel: SKLabelNode!
+    var ballsLabel: SKLabelNode!
+    var numberOfBoxes = 0
     
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
+        }
+    }
+    
+    var remainingBalls: Int = 5 {
+        didSet {
+            ballsLabel.text = "Remaining balls: \(remainingBalls)"
         }
     }
     
@@ -69,6 +77,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         editLabel.text = "Edit"
         editLabel.position = CGPoint(x: 80, y: 700)
         addChild(editLabel)
+        
+        ballsLabel = SKLabelNode(fontNamed: "Chalkduster")
+        ballsLabel.text = "Remaining balls: \(remainingBalls)"
+        ballsLabel.horizontalAlignmentMode = .right
+        ballsLabel.position = CGPoint(x: 980, y: 630)
+        addChild(ballsLabel)
+    }
+    
+    func loadGame() {
+        remainingBalls = 5
+        numberOfBoxes = 0
+        score = 0
+        
+        for node in children {
+            if node.name == "box" {
+                node.removeFromParent()
+            }
+        }
     }
     
     func makeBouncer(at position: CGPoint) {
@@ -122,10 +148,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func collisionBetween(ball: SKNode, object: SKNode) {
         if object.name == "good" {
             destroy(ball: ball)
+            remainingBalls += 1
             score += 1
         } else if object.name == "bad" {
             destroy(ball: ball)
             score -= 1
+        } else if object.name == "box" {
+            print("box was hit")
+            object.removeFromParent()
+            numberOfBoxes -= 1
         }
     }
     
@@ -136,6 +167,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         ball.removeFromParent()
+        
+        if remainingBalls == 0 {
+            if numberOfBoxes == 0 {
+                let ac = UIAlertController(title: "YOU WON", message: "Congratulations, you cleared all boxes!", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.view?.window?.rootViewController?.present(ac, animated: true, completion: loadGame)
+            } else {
+                let ac = UIAlertController(title: "YOU LOST", message: "Close one, but there was a total of \(numberOfBoxes) boxe(s) left. You'll be better next time!", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.view?.window?.rootViewController?.present(ac, animated: true, completion: loadGame)
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -156,6 +199,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
                     box.physicsBody?.isDynamic = false
                     
+                    box.name = "box"
+                    numberOfBoxes += 1
+                    
                     addChild(box)
                 } else {
                     let ball = SKSpriteNode(imageNamed: BallColor.random())
@@ -165,6 +211,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     let ballLocation = CGPoint(x: location.x, y: UIScreen.main.bounds.height - 150)
                     ball.position = ballLocation
                     ball.name = "ball"
+                    remainingBalls -= 1
                     addChild(ball)
                 }
             }
