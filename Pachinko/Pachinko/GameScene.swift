@@ -2,6 +2,22 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    enum BallColor: String {
+        case red = "ballRed"
+        case blue = "ballBlue"
+        case grey = "ballGrey"
+        case purple = "ballPurple"
+        case yellow = "ballYellow"
+        case cyan = "ballCyan"
+        case green = "ballGreen"
+        
+        static func random() -> String {
+            let colors: [BallColor] = [.red, .blue, .grey, .purple, .yellow, .cyan, .green]
+            let rand = arc4random_uniform(UInt32(colors.count))
+            return colors[Int(rand)].rawValue
+        }
+    }
+    
     var scoreLabel: SKLabelNode!
     
     var score: Int = 0 {
@@ -142,7 +158,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     addChild(box)
                 } else {
-                    let ball = SKSpriteNode(imageNamed: "ballRed")
+                    let ball = SKSpriteNode(imageNamed: BallColor.random())
                     ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2)
                     ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
                     ball.physicsBody?.restitution = 0.4
