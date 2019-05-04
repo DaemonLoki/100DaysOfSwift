@@ -47,18 +47,33 @@ class ViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PictureCell", for: indexPath) as? PictureCell else {
             fatalError("Unable to dequeue PictureCell.")
         }
-        cell.imageName.text = pictures[indexPath.row]
+        let imageName = pictures[indexPath.row]
+        cell.imageName.text = imageName
         cell.imageView.image = UIImage(named: pictures[indexPath.row])
+        print("Image '\(imageName)' cell was clicked \(self.getCountFor(imageName: imageName)) times so far")
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let imageName = pictures[indexPath.row]
+        let currentCount = getCountFor(imageName: imageName)
+        self.writeCountFor(imageName: imageName, newCount: currentCount + 1)
         if let detailVC = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            detailVC.selectedImage = pictures[indexPath.row]
+            detailVC.selectedImage = imageName
             detailVC.imagePosition = indexPath.row + 1
             detailVC.numberOfImages = pictures.count
             navigationController?.pushViewController(detailVC, animated: true)
         }
+    }
+    
+    func getCountFor(imageName name: String) -> Int {
+        let defaults = UserDefaults.standard
+        return defaults.value(forKey: name) as? Int ?? 0
+    }
+    
+    func writeCountFor(imageName name: String, newCount count: Int) {
+        let defaults = UserDefaults.standard
+        defaults.set(count, forKey: name)
     }
     
     /* Comment out UITableView code because we temporarily migrated it to UICollectionView
