@@ -76,7 +76,14 @@ class ViewController: UIViewController {
         questionsAnswered += 1
         
         if questionsAnswered >= MAX_QUESTIONS {
-            let ac = UIAlertController(title: "FINAL SCORE", message: "Your final score is \(score)!", preferredStyle: .alert)
+            
+            let ac: UIAlertController
+            if score > getHighScore() {
+                writeHighScore(score: score)
+                ac = UIAlertController(title: "CONGRATULATIONS", message: "You scored a new highscore with \(score) points! Well Done!", preferredStyle: <#T##UIAlertController.Style#>)
+            } else {
+                ac = UIAlertController(title: "FINAL SCORE", message: "Your final score is \(score)!", preferredStyle: .alert)
+            }
             ac.addAction(UIAlertAction(title: "Restart game", style: .default, handler: initGame))
             present(ac, animated: true)
         } else {
@@ -93,6 +100,16 @@ class ViewController: UIViewController {
         let ac = UIAlertController(title: "Current Score", message: scorestr, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
         present(ac, animated: true)
+    }
+    
+    func writeHighScore(score: Int) {
+        let defaults = UserDefaults.standard
+        defaults.set(score, forKey: "score")
+    }
+    
+    func getHighScore() -> Int {
+        let defaults = UserDefaults.standard
+        return defaults.integer(forKey: "score")
     }
     
 }
