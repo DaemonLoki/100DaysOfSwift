@@ -74,7 +74,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func save(_ sender: Any) {
-        guard let image = imageView.image else { return }
+        guard let image = imageView.image else {
+            let ac = UIAlertController(title: "Error", message: "Couldn't find an image to save. Please add one first by clicking the '+' button in the upper right.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(ac, animated: true)
+            return
+        }
         
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
