@@ -13,6 +13,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var intensity: UISlider!
+    @IBOutlet var radius: UISlider!
+    @IBOutlet var scale: UISlider!
+    
+    
     @IBOutlet var changeFilterButton: UIButton!
     
     var currentImage: UIImage!
@@ -22,7 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "YACIFP"
+        title = "Core Image Filters FTW"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
         
         context = CIContext()
@@ -46,6 +50,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         
+        setFilterOptions()
         applyProcessing()
     }
     
@@ -59,7 +64,49 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         
+        setFilterOptions()
+        
         applyProcessing()
+    }
+    
+    func setFilterOptions() {
+        let inputKeys = currentFilter.inputKeys
+        
+        if inputKeys.contains(kCIInputIntensityKey) {
+            setValueForFilter(key: kCIInputIntensityKey, to: intensity.value)
+            intensity.isEnabled = true
+        } else {
+            intensity.isEnabled = false
+        }
+        
+        if inputKeys.contains(kCIInputRadiusKey) {
+            setValueForFilter(key: kCIInputRadiusKey, to: radius.value * 200)
+            radius.isEnabled = true
+        } else {
+            radius.isEnabled = false
+        }
+        
+        if inputKeys.contains(kCIInputScaleKey) {
+            setValueForFilter(key: kCIInputScaleKey, to: scale.value * 10)
+            scale.isEnabled = true
+        } else {
+            scale.isEnabled = false
+        }
+    }
+    
+    func setValueForFilter(key: String, to value: Any) {
+        currentFilter.setValue(value, forKey: key)
+    }
+    
+    func applyProcessing() {
+        let inputKeys = currentFilter.inputKeys
+        if inputKeys.contains(kCIInputCenterKey) { currentFilter.setValue(CIVector(x: currentImage.size.width/2, y: currentImage.size.height / 2), forKey: kCIInputCenterKey) }
+        
+        guard let image = currentFilter.outputImage else { return }
+        if let cgImg = context.createCGImage(image, from: image.extent) {
+            let processedImage = UIImage(cgImage: cgImg)
+            imageView.image = processedImage
+        }
     }
 
     @IBAction func changeFilter(_ sender: Any) {
@@ -99,22 +146,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func intensityChanged(_ sender: Any) {
+        setValueForFilter(key: kCIInputIntensityKey, to: intensity.value)
         applyProcessing()
     }
     
-    func applyProcessing() {
-        let inputKeys = currentFilter.inputKeys
-        
-        if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey) }
-        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey) }
-        if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey) }
-        if inputKeys.contains(kCIInputCenterKey) { currentFilter.setValue(CIVector(x: currentImage.size.width/2, y: currentImage.size.height / 2), forKey: kCIInputCenterKey) }
-        
-        guard let image = currentFilter.outputImage else { return }
-        if let cgImg = context.createCGImage(image, from: image.extent) {
-            let processedImage = UIImage(cgImage: cgImg)
-            imageView.image = processedImage
-        }
+    @IBAction func scaleChanged(_ sender: Any) {
+        setValueForFilter(key: kCIInputScaleKey, to: scale.value * 10)
+        applyProcessing()
+    }
+    
+    @IBAction func radiusChanged(_ sender: Any) {
+        setValueForFilter(key: kCIInputRadiusKey, to: radius.value * 200)
+        applyProcessing()
     }
     
 }
