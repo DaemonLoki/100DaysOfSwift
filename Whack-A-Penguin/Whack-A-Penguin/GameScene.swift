@@ -107,6 +107,13 @@ class GameScene: SKScene {
         gameOver.position = CGPoint(x: 512, y: 384)
         gameOver.zPosition = 1
         addChild(gameOver)
+        
+        let finalScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        finalScoreLabel.position = CGPoint(x: 518, y: 310)
+        finalScoreLabel.zPosition = 1
+        finalScoreLabel.text = "Final score: \(score)"
+        finalScoreLabel.fontSize = 40
+        addChild(finalScoreLabel)
     }
     
     func createSlot(at position: CGPoint) {
