@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC584753228973640037B451 /* smoke_emitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC584752228973640037B451 /* smoke_emitter.sks */; };
+		AC584755228981EE0037B451 /* mud_emitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC584754228981EE0037B451 /* mud_emitter.sks */; };
 		ACD106942286EE2400D3EB46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD106932286EE2400D3EB46 /* AppDelegate.swift */; };
 		ACD106962286EE2400D3EB46 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACD106952286EE2400D3EB46 /* GameScene.sks */; };
 		ACD1069A2286EE2400D3EB46 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD106992286EE2400D3EB46 /* GameScene.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC584752228973640037B451 /* smoke_emitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = smoke_emitter.sks; sourceTree = "<group>"; };
+		AC584754228981EE0037B451 /* mud_emitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = mud_emitter.sks; sourceTree = "<group>"; };
 		ACD106902286EE2400D3EB46 /* Whack-A-Penguin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whack-A-Penguin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD106932286EE2400D3EB46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD106952286EE2400D3EB46 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -91,8 +95,10 @@
 				ACD106932286EE2400D3EB46 /* AppDelegate.swift */,
 				ACD106952286EE2400D3EB46 /* GameScene.sks */,
 				ACD106992286EE2400D3EB46 /* GameScene.swift */,
+				AC584752228973640037B451 /* smoke_emitter.sks */,
 				ACD1069B2286EE2400D3EB46 /* GameViewController.swift */,
 				ACD106C82286F01700D3EB46 /* WhackSlot.swift */,
+				AC584754228981EE0037B451 /* mud_emitter.sks */,
 				ACD1069D2286EE2400D3EB46 /* Main.storyboard */,
 				ACD106A02286EE2400D3EB46 /* Assets.xcassets */,
 				ACD106AB2286EEED00D3EB46 /* Content */,
@@ -182,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD106BA2286EEED00D3EB46 /* whackBad.caf in Resources */,
+				AC584755228981EE0037B451 /* mud_emitter.sks in Resources */,
 				ACD1069F2286EE2400D3EB46 /* Main.storyboard in Resources */,
 				ACD106C22286EEED00D3EB46 /* whackHole@2x.png in Resources */,
 				ACD106C42286EEED00D3EB46 /* penguinGood@2x.png in Resources */,
@@ -193,6 +200,7 @@
 				ACD106BD2286EEED00D3EB46 /* whackBackground.png in Resources */,
 				ACD106C02286EEED00D3EB46 /* whackHole.png in Resources */,
 				ACD106C72286EEED00D3EB46 /* whackBackground@2x.png in Resources */,
+				AC584753228973640037B451 /* smoke_emitter.sks in Resources */,
 				ACD106BC2286EEED00D3EB46 /* whackMask.png in Resources */,
 				ACD106C12286EEED00D3EB46 /* penguinEvil@2x.png in Resources */,
 				ACD106A42286EE2400D3EB46 /* LaunchScreen.storyboard in Resources */,

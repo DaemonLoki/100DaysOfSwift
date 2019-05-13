@@ -24,6 +24,7 @@ class WhackSlot: SKNode {
         let cropNode = SKCropNode()
         cropNode.position = CGPoint(x: 0, y: 15)
         cropNode.zPosition = 1
+        cropNode.name = "cropNode"
         cropNode.maskNode = SKSpriteNode(imageNamed: "whackMask")
         
         charNode = SKSpriteNode(imageNamed: "penguinGood")
@@ -40,7 +41,9 @@ class WhackSlot: SKNode {
         charNode.xScale = 1
         charNode.yScale = 1
         
+        playMudEffect()
         charNode.run(SKAction.moveBy(x: 0, y: 80, duration: 0.05))
+        
         isVisible = true
         isHit = false
         
@@ -52,6 +55,7 @@ class WhackSlot: SKNode {
             charNode.name = "charEnemy"
         }
         
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + (hideTime * 3.5)) { [weak self] in
             self?.hide()
         }
@@ -59,6 +63,7 @@ class WhackSlot: SKNode {
     
     func hide() {
         if !isVisible { return }
+        playMudEffect()
         charNode.run(SKAction.moveBy(x: 0, y: -80, duration: 0.05))
         isVisible = false
     }
@@ -66,9 +71,43 @@ class WhackSlot: SKNode {
     func hit() {
         isHit = true
         
+        if let smokeParticles = SKEmitterNode(fileNamed: "smoke_emitter") {
+            let charPosition = charNode.position
+            smokeParticles.name = "smoke"
+            smokeParticles.position = CGPoint(x: charPosition.x, y: charPosition.y + 20)
+                
+            addChild(smokeParticles)
+            let smokeDelay = SKAction.wait(forDuration: 3)
+            let removeSmoke = SKAction.run { [unowned self] in
+                self.childNode(withName: "smoke")?.removeFromParent()
+            }
+            charNode.run(SKAction.sequence([smokeDelay, removeSmoke]))
+        }
+        
         let delay = SKAction.wait(forDuration: 0.25)
         let hide = SKAction.moveBy(x: 0, y: -80, duration: 0.5)
         let notVisible = SKAction.run {[unowned self] in self.isVisible = false }
         charNode.run(SKAction.sequence([delay, hide, notVisible]))
+    }
+    
+    func playMudEffect() {
+        if let mudParticles = SKEmitterNode(fileNamed: "mud_emitter") {
+            let charPosition = charNode.position
+            mudParticles.name = "mud"
+            if isVisible == false {
+                mudParticles.position = CGPoint(x: charPosition.x, y: charPosition.y + 80)
+            } else {
+                mudParticles.position = CGPoint(x: charPosition.x, y: charPosition.y)
+            }
+            
+            
+            addChild(mudParticles)
+            
+            let mudDelay = SKAction.wait(forDuration: 3)
+            let removeMud = SKAction.run { [unowned self] in
+                self.childNode(withName: "mud")?.removeFromParent()
+            }
+            charNode.run(SKAction.sequence([mudDelay, removeMud]))
+        }
     }
 }
