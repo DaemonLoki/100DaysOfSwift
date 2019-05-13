@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC584753228973640037B451 /* smoke_emitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC584752228973640037B451 /* smoke_emitter.sks */; };
 		AC584755228981EE0037B451 /* mud_emitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC584754228981EE0037B451 /* mud_emitter.sks */; };
+		AC584757228988260037B451 /* game_over.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5847562289871B0037B451 /* game_over.m4a */; };
 		ACD106942286EE2400D3EB46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD106932286EE2400D3EB46 /* AppDelegate.swift */; };
 		ACD106962286EE2400D3EB46 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACD106952286EE2400D3EB46 /* GameScene.sks */; };
 		ACD1069A2286EE2400D3EB46 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD106992286EE2400D3EB46 /* GameScene.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		AC584752228973640037B451 /* smoke_emitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = smoke_emitter.sks; sourceTree = "<group>"; };
 		AC584754228981EE0037B451 /* mud_emitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = mud_emitter.sks; sourceTree = "<group>"; };
+		AC5847562289871B0037B451 /* game_over.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = game_over.m4a; sourceTree = "<group>"; };
 		ACD106902286EE2400D3EB46 /* Whack-A-Penguin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whack-A-Penguin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD106932286EE2400D3EB46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD106952286EE2400D3EB46 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		ACD106AB2286EEED00D3EB46 /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				AC5847562289871B0037B451 /* game_over.m4a */,
 				ACD106AC2286EEED00D3EB46 /* whackBad.caf */,
 				ACD106AD2286EEED00D3EB46 /* penguinGood.png */,
 				ACD106AE2286EEED00D3EB46 /* whackMask.png */,
@@ -192,6 +195,7 @@
 				ACD1069F2286EE2400D3EB46 /* Main.storyboard in Resources */,
 				ACD106C22286EEED00D3EB46 /* whackHole@2x.png in Resources */,
 				ACD106C42286EEED00D3EB46 /* penguinGood@2x.png in Resources */,
+				AC584757228988260037B451 /* game_over.m4a in Resources */,
 				ACD106BE2286EEED00D3EB46 /* whack.caf in Resources */,
 				ACD106C52286EEED00D3EB46 /* gameOver.png in Resources */,
 				ACD106962286EE2400D3EB46 /* GameScene.sks in Resources */,
