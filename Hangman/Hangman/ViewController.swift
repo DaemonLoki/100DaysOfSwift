@@ -93,6 +93,7 @@ class ViewController: UIViewController {
                     letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
                     letterButton.layer.backgroundColor = UIColor.blue.cgColor
                     letterButton.setTitleColor(UIColor.white, for: .normal)
+                    letterButton.alpha = 1
                     letterButton.setTitle(String(r.removeFirst()), for: .normal)
                     
                     let frame: CGRect
@@ -127,6 +128,7 @@ class ViewController: UIViewController {
         for button in letterButtons {
             button.backgroundColor = .blue
             button.setTitleColor(.white, for: .normal)
+            button.alpha = 1
             button.isUserInteractionEnabled = true
         }
         
@@ -164,9 +166,14 @@ class ViewController: UIViewController {
             }
         }
         
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: [], animations: {
+            sender.alpha = 0.0
+        })
+        /*
         sender.setTitleColor(UIColor.blue, for: .normal)
         sender.backgroundColor = .white
         sender.isUserInteractionEnabled = false
+         */
     }
     
     func isLetterInWord(letter: String) -> Bool {
