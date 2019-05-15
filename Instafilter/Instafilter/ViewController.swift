@@ -46,6 +46,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true)
         
         currentImage = image
+        imageView.image = image
+        imageView.alpha = 0.0
+        
+        perform(#selector(fadeInImageView), with: nil, afterDelay: 0)
         
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
@@ -107,6 +111,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let processedImage = UIImage(cgImage: cgImg)
             imageView.image = processedImage
         }
+    }
+    
+    @objc func fadeInImageView() {
+        UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
+            self.imageView.alpha = 1.0
+        }, completion: nil)
     }
 
     @IBAction func changeFilter(_ sender: Any) {
