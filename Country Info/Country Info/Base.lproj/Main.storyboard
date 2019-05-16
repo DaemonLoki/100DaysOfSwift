@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rqv-uQ-bpi">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="cNY-Yt-Mhg">
+            <objects>
+                <tableViewController id="EIJ-im-JRC" customClass="ViewController" customModule="Country_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="207" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4if-1G-qmA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Country" rowHeight="207" id="uas-qR-DvI" customClass="CountryCell" customModule="Country_Info" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="207"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uas-qR-DvI" id="4OU-MI-taS">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="germany" translatesAutoresizingMaskIntoConstraints="NO" id="ii9-Pb-3kT" customClass="FlagImageView" customModule="Country_Info" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="11" width="374" height="185"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <view clipsSubviews="YES" alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ael-1y-xCM" customClass="BackgroundView" customModule="Country_Info" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="11" width="374" height="185"/>
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Germany" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="co9-wQ-fvl">
+                                            <rect key="frame" x="124" y="78.5" width="166" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="TCh-LN-2vT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ael-1y-xCM" firstAttribute="trailing" secondItem="4OU-MI-taS" secondAttribute="trailingMargin" id="1cF-dw-shV"/>
+                                        <constraint firstItem="Ael-1y-xCM" firstAttribute="bottom" secondItem="4OU-MI-taS" secondAttribute="bottomMargin" id="HdT-qa-ava"/>
+                                        <constraint firstItem="Ael-1y-xCM" firstAttribute="top" secondItem="4OU-MI-taS" secondAttribute="topMargin" id="Ilf-aw-Psg"/>
+                                        <constraint firstItem="ii9-Pb-3kT" firstAttribute="leading" secondItem="4OU-MI-taS" secondAttribute="leadingMargin" id="Je9-DO-WtG"/>
+                                        <constraint firstItem="co9-wQ-fvl" firstAttribute="centerY" secondItem="4OU-MI-taS" secondAttribute="centerY" id="M2J-yU-ULb"/>
+                                        <constraint firstItem="ii9-Pb-3kT" firstAttribute="top" secondItem="4OU-MI-taS" secondAttribute="topMargin" id="MsX-QT-8jc"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="co9-wQ-fvl" secondAttribute="trailing" id="YdN-SS-a2G"/>
+                                        <constraint firstItem="co9-wQ-fvl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4OU-MI-taS" secondAttribute="leadingMargin" id="bEK-JB-29m"/>
+                                        <constraint firstItem="ii9-Pb-3kT" firstAttribute="bottom" secondItem="4OU-MI-taS" secondAttribute="bottomMargin" id="knW-p4-9HC"/>
+                                        <constraint firstItem="Ael-1y-xCM" firstAttribute="leading" secondItem="4OU-MI-taS" secondAttribute="leadingMargin" id="pG6-Op-M9W"/>
+                                        <constraint firstItem="ii9-Pb-3kT" firstAttribute="trailing" secondItem="4OU-MI-taS" secondAttribute="trailingMargin" id="yKz-k8-U0h"/>
+                                        <constraint firstItem="co9-wQ-fvl" firstAttribute="centerX" secondItem="4OU-MI-taS" secondAttribute="centerX" id="ysA-qK-xNC"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="countryName" destination="co9-wQ-fvl" id="wfx-yY-IcH"/>
+                                    <outlet property="flagImageView" destination="ii9-Pb-3kT" id="0ba-Rs-wic"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="EIJ-im-JRC" id="7Qs-mu-EtX"/>
+                            <outlet property="delegate" destination="EIJ-im-JRC" id="6h6-NM-8ph"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="g59-Ns-f09"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H2B-at-4s3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078.2608695652175" y="109.82142857142857"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nZU-0u-fwa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rqv-uQ-bpi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8HL-5f-gnR">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EIJ-im-JRC" kind="relationship" relationship="rootViewController" id="obf-In-FhF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMf-jj-P8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168.11594202898553" y="109.82142857142857"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="89Z-bf-Puc">
+            <objects>
+                <viewController storyboardIdentifier="Detail" id="x0A-hA-bcP" customClass="DetailViewController" customModule="Country_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PFd-aS-wcd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jBa-LF-FsB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pzr-5m-OeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1984" y="110"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="germany" width="200" height="100"/>
+    </resources>
+</document>
