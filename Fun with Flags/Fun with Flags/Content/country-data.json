@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Estonia",
+        "path": "estonia",
+        "link": "https://restcountries.eu/rest/v2/alpha/ee",
+    },
+    {
+        "name": "France",
+        "path": "france",
+        "link": "https://restcountries.eu/rest/v2/alpha/fr",
+    },
+    {
+        "name": "Germany",
+        "path": "germany",
+        "link": "https://restcountries.eu/rest/v2/alpha/de",
+    },
+    {
+        "name": "Ireland",
+        "path": "ireland",
+        "link": "https://restcountries.eu/rest/v2/alpha/ie",
+    },
+    {
+        "name": "Italy",
+        "path": "italy",
+        "link": "https://restcountries.eu/rest/v2/alpha/it",
+    },
+    {
+        "name": "Monaco",
+        "path": "monaco",
+        "link": "https://restcountries.eu/rest/v2/alpha/mc",
+    },
+    {
+        "name": "Nigeria",
+        "path": "nigeria",
+        "link": "https://restcountries.eu/rest/v2/alpha/ng",
+    },
+    {
+        "name": "Poland",
+        "path": "poland",
+        "link": "https://restcountries.eu/rest/v2/alpha/pl",
+    },
+    {
+        "name": "Russia",
+        "path": "russia",
+        "link": "https://restcountries.eu/rest/v2/alpha/ru",
+    },
+    {
+        "name": "Spain",
+        "path": "spain",
+        "link": "https://restcountries.eu/rest/v2/alpha/es",
+    },
+    {
+        "name": "UK",
+        "path": "uk",
+        "link": "https://restcountries.eu/rest/v2/alpha/gb",
+    },
+    {
+        "name": "US",
+        "path": "us",
+        "link": "https://restcountries.eu/rest/v2/alpha/us",
+    }
+]

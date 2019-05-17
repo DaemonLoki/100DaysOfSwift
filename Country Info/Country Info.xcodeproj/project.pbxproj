@@ -13,11 +13,12 @@
 		AC194488228D6BE800B477B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC194487228D6BE800B477B3 /* Assets.xcassets */; };
 		AC19448B228D6BE800B477B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC194489228D6BE800B477B3 /* LaunchScreen.storyboard */; };
 		AC1944DC228D7ADD00B477B3 /* FlagImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1944DB228D7ADD00B477B3 /* FlagImageView.swift */; };
-		AC1944DE228D7D3E00B477B3 /* flag-data.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1944DD228D7D3E00B477B3 /* flag-data.json */; };
+		AC1944DE228D7D3E00B477B3 /* country-data.json in Resources */ = {isa = PBXBuildFile; fileRef = AC1944DD228D7D3E00B477B3 /* country-data.json */; };
 		AC1944E0228D7E1000B477B3 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1944DF228D7E1000B477B3 /* Country.swift */; };
 		AC1944E2228D7EDE00B477B3 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1944E1228D7EDE00B477B3 /* CountryCell.swift */; };
 		AC1944E4228D824400B477B3 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1944E3228D824400B477B3 /* BackgroundView.swift */; };
 		AC1944E6228D839600B477B3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1944E5228D839600B477B3 /* DetailViewController.swift */; };
+		AC3B9A7E228D8C4D00164662 /* CountryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B9A7D228D8C4D00164662 /* CountryInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +30,12 @@
 		AC19448A228D6BE800B477B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC19448C228D6BE800B477B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1944DB228D7ADD00B477B3 /* FlagImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagImageView.swift; sourceTree = "<group>"; };
-		AC1944DD228D7D3E00B477B3 /* flag-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "flag-data.json"; path = "../../../Fun with Flags/Fun with Flags/Content/flag-data.json"; sourceTree = "<group>"; };
+		AC1944DD228D7D3E00B477B3 /* country-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "country-data.json"; path = "../../../Fun with Flags/Fun with Flags/Content/country-data.json"; sourceTree = "<group>"; };
 		AC1944DF228D7E1000B477B3 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		AC1944E1228D7EDE00B477B3 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		AC1944E3228D824400B477B3 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		AC1944E5228D839600B477B3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AC3B9A7D228D8C4D00164662 /* CountryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,17 +69,15 @@
 			isa = PBXGroup;
 			children = (
 				AC194480228D6BE700B477B3 /* AppDelegate.swift */,
+				AC19448C228D6BE800B477B3 /* Info.plist */,
+				AC3B9A80228D96B000164662 /* View */,
+				AC3B9A7F228D969A00164662 /* Model */,
+				AC194492228D6F6600B477B3 /* Content */,
 				AC194482228D6BE700B477B3 /* ViewController.swift */,
-				AC1944DF228D7E1000B477B3 /* Country.swift */,
-				AC194484228D6BE700B477B3 /* Main.storyboard */,
 				AC1944E5228D839600B477B3 /* DetailViewController.swift */,
 				AC194487228D6BE800B477B3 /* Assets.xcassets */,
-				AC194492228D6F6600B477B3 /* Content */,
+				AC194484228D6BE700B477B3 /* Main.storyboard */,
 				AC194489228D6BE800B477B3 /* LaunchScreen.storyboard */,
-				AC19448C228D6BE800B477B3 /* Info.plist */,
-				AC1944DB228D7ADD00B477B3 /* FlagImageView.swift */,
-				AC1944E1228D7EDE00B477B3 /* CountryCell.swift */,
-				AC1944E3228D824400B477B3 /* BackgroundView.swift */,
 			);
 			path = "Country Info";
 			sourceTree = "<group>";
@@ -85,9 +85,28 @@
 		AC194492228D6F6600B477B3 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				AC1944DD228D7D3E00B477B3 /* flag-data.json */,
+				AC1944DD228D7D3E00B477B3 /* country-data.json */,
 			);
 			path = Content;
+			sourceTree = "<group>";
+		};
+		AC3B9A7F228D969A00164662 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC1944DF228D7E1000B477B3 /* Country.swift */,
+				AC3B9A7D228D8C4D00164662 /* CountryInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC3B9A80228D96B000164662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC1944DB228D7ADD00B477B3 /* FlagImageView.swift */,
+				AC1944E1228D7EDE00B477B3 /* CountryCell.swift */,
+				AC1944E3228D824400B477B3 /* BackgroundView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,7 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC19448B228D6BE800B477B3 /* LaunchScreen.storyboard in Resources */,
-				AC1944DE228D7D3E00B477B3 /* flag-data.json in Resources */,
+				AC1944DE228D7D3E00B477B3 /* country-data.json in Resources */,
 				AC194488228D6BE800B477B3 /* Assets.xcassets in Resources */,
 				AC194486228D6BE700B477B3 /* Main.storyboard in Resources */,
 			);
@@ -166,6 +185,7 @@
 				AC1944E0228D7E1000B477B3 /* Country.swift in Sources */,
 				AC194483228D6BE700B477B3 /* ViewController.swift in Sources */,
 				AC1944E2228D7EDE00B477B3 /* CountryCell.swift in Sources */,
+				AC3B9A7E228D8C4D00164662 /* CountryInfo.swift in Sources */,
 				AC194481228D6BE700B477B3 /* AppDelegate.swift in Sources */,
 				AC1944DC228D7ADD00B477B3 /* FlagImageView.swift in Sources */,
 				AC1944E6228D839600B477B3 /* DetailViewController.swift in Sources */,

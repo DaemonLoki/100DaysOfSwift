@@ -9,4 +9,5 @@
 struct Country: Codable {
     var name: String
     var path: String
+    var link: String
 }

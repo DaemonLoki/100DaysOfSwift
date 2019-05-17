@@ -17,21 +17,33 @@ class ViewController: UITableViewController {
         
         title = "Countries"
         
-        guard let path = Bundle.main.path(forResource: "flag-data", ofType: "json") else {
-            fatalError("Couldn't find path to countries data!")
-        }
-        
-        let flagFileUrl = URL(fileURLWithPath: path)
-        
-        guard let data = try? Data(contentsOf: flagFileUrl) else {
-            fatalError("Couldn't find countries data!")
-        }
-        
-        let decoder = JSONDecoder()
-        do {
-            countries = try decoder.decode([Country].self, from: data)
-        } catch {
-            print("Error during decoding of country file!")
+        loadCountries()
+    }
+    
+    func loadCountries() {
+        DispatchQueue.global().async {
+            guard let path = Bundle.main.path(forResource: "country-data", ofType: "json") else {
+                fatalError("Couldn't find path to countries data!")
+            }
+            
+            let flagFileUrl = URL(fileURLWithPath: path)
+            
+            guard let data = try? Data(contentsOf: flagFileUrl) else {
+                fatalError("Couldn't find countries data!")
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let decodedCountries = try decoder.decode([Country].self, from: data)
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.countries = decodedCountries
+                    self?.tableView.reloadData()
+                }
+                
+            } catch {
+                print("Error during decoding of country file!")
+            }
         }
     }
     
