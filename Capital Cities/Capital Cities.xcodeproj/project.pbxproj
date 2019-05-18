@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC86C6B422903624006AA15D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86C6B322903624006AA15D /* DetailViewController.swift */; };
 		ACAB61E2228EAB8100E87C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAB61E1228EAB8100E87C57 /* AppDelegate.swift */; };
 		ACAB61E4228EAB8100E87C57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAB61E3228EAB8100E87C57 /* ViewController.swift */; };
 		ACAB61E7228EAB8100E87C57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACAB61E5228EAB8100E87C57 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC86C6B322903624006AA15D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ACAB61DE228EAB8100E87C57 /* Capital Cities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Capital Cities.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAB61E1228EAB8100E87C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACAB61E3228EAB8100E87C57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				ACAB61E1228EAB8100E87C57 /* AppDelegate.swift */,
 				ACAB61E3228EAB8100E87C57 /* ViewController.swift */,
+				AC86C6B322903624006AA15D /* DetailViewController.swift */,
 				ACAB61F3228EACD000E87C57 /* Capital.swift */,
 				ACAB61E5228EAB8100E87C57 /* Main.storyboard */,
 				ACAB61E8228EAB8100E87C57 /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 				ACAB61E4228EAB8100E87C57 /* ViewController.swift in Sources */,
 				ACAB61E2228EAB8100E87C57 /* AppDelegate.swift in Sources */,
 				ACAB61F4228EACD000E87C57 /* Capital.swift in Sources */,
+				AC86C6B422903624006AA15D /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
