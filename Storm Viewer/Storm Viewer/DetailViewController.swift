@@ -21,6 +21,8 @@ class DetailViewController: UIViewController {
         
         navigationItem.largeTitleDisplayMode = .never
         
+        assert(selectedImage != nil)
+        
         if let pos = imagePosition, let num = numberOfImages {
             title = "Picture \(pos) of \(num)"
         } else {
