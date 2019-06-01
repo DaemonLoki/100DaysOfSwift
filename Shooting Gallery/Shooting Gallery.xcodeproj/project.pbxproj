@@ -14,7 +14,6 @@
 		AC13E808229976DF00493FAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC13E806229976DF00493FAC /* Main.storyboard */; };
 		AC13E80A229976E100493FAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC13E809229976E100493FAC /* Assets.xcassets */; };
 		AC13E80D229976E100493FAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC13E80B229976E100493FAC /* LaunchScreen.storyboard */; };
-		AC247176229C2207006C68F9 /* TargetNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC247175229C2207006C68F9 /* TargetNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		AC13E809229976E100493FAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC13E80C229976E100493FAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC13E80E229976E100493FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC247175229C2207006C68F9 /* TargetNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +61,6 @@
 				AC13E7FC229976DF00493FAC /* AppDelegate.swift */,
 				AC13E7FE229976DF00493FAC /* GameScene.sks */,
 				AC13E802229976DF00493FAC /* GameScene.swift */,
-				AC247175229C2207006C68F9 /* TargetNode.swift */,
 				AC13E804229976DF00493FAC /* GameViewController.swift */,
 				AC13E806229976DF00493FAC /* Main.storyboard */,
 				AC13E809229976E100493FAC /* Assets.xcassets */,
@@ -145,7 +142,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC247176229C2207006C68F9 /* TargetNode.swift in Sources */,
 				AC13E803229976DF00493FAC /* GameScene.swift in Sources */,
 				AC13E805229976DF00493FAC /* GameViewController.swift in Sources */,
 				AC13E7FD229976DF00493FAC /* AppDelegate.swift in Sources */,

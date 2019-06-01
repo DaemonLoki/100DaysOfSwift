@@ -11,11 +11,12 @@ import SpriteKit
 class GameScene: SKScene {
     
     var gameTimer: Timer?
-    var timerInterval: Double = 2
-    var timerReductionFactor = 0.1
+    var timerInterval: Double = 1.5
+    var timerReductionFactor = 0.2
 
     var objectsCreated = 0
-    var speedChangeInterval = 20
+    var changeInterval = 15
+    let baseVelocity: CGFloat = 100
     var isGameRunning = false
     
     var scoreLabel: SKLabelNode!
@@ -25,6 +26,23 @@ class GameScene: SKScene {
             scoreLabel.text = "Score: \(score)"
         }
     }
+    
+    let plankWidth: Int = 870
+    let plankHeight: Int = 50
+    let plankOffset: CGFloat = 50
+    
+    let plankYPositions: [CGFloat] = [
+        0.25,
+        0.5,
+        0.75
+    ]
+    
+    let targets = [
+        "target0",
+        "target1",
+        "target2",
+        "target3"
+    ]
     
     override func didMove(to view: SKView) {
         setupLayout()
@@ -50,16 +68,22 @@ class GameScene: SKScene {
     }
     
     func setupLayout() {
-        let woodenPlank = SKSpriteNode(imageNamed: "wooden_plank")
-        woodenPlank.size = CGSize(width: 870, height: 70)
-        woodenPlank.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
-        woodenPlank.zPosition = -1
-        addChild(woodenPlank)
+        for plankYPos in plankYPositions {
+            setupWoodenPlank(yPos: self.frame.height * plankYPos)
+        }
         
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         scoreLabel.position = CGPoint(x: 16, y: 16)
         scoreLabel.horizontalAlignmentMode = .left
         addChild(scoreLabel)
+    }
+    
+    func setupWoodenPlank(yPos: CGFloat) {
+        let woodenPlank = SKSpriteNode(imageNamed: "wooden_plank")
+        woodenPlank.size = CGSize(width: plankWidth, height: plankHeight)
+        woodenPlank.position = CGPoint(x: self.frame.width / 2, y: yPos - plankOffset)
+        woodenPlank.zPosition = -1
+        addChild(woodenPlank)
     }
     
     func startGame() {
@@ -74,27 +98,46 @@ class GameScene: SKScene {
     }
     
     @objc func createEnemy() {
-        let target = SKSpriteNode(imageNamed: "target0")
-        target.position = CGPoint(x: 0, y: (self.frame.height / 2) + 100)
+        let target = SKSpriteNode(imageNamed: targets[Int.random(in: 0...3)])
+        let randomInt = Int.random(in: 0...2)
+        let yPos = self.frame.height * plankYPositions[randomInt] - plankOffset
+        let velocity: CGFloat
+        let xPos: CGFloat
+        if randomInt % 2 == 0 {
+            velocity = baseVelocity * (1 / CGFloat(timerInterval))
+            xPos = 0
+        } else {
+            velocity = -baseVelocity * (1 / CGFloat(timerInterval))
+            xPos = 1024
+        }
+        target.position = CGPoint(x: xPos, y: yPos + 80)
         target.name = "target"
         addChild(target)
         
         target.physicsBody = SKPhysicsBody(texture: target.texture!, size: target.size)
-        target.physicsBody?.velocity = CGVector(dx: 120, dy: 0)
-        target.physicsBody?.linearDamping = 0
         
-        //target.addPhysicsBody()
+        target.physicsBody?.velocity = CGVector(dx: velocity, dy: 0)
+        target.physicsBody?.linearDamping = 0
         
         objectsCreated += 1
         
-        if objectsCreated % speedChangeInterval == 0 {
-            if timerInterval <= 0.5 { return }
-            
-            gameTimer?.invalidate()
-            
-            timerInterval -= timerReductionFactor
-            gameTimer = Timer.scheduledTimer(timeInterval: timerInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        if objectsCreated % changeInterval == 0 {
+            levelUp()
         }
+    }
+    
+    func levelUp() {
+        gameTimer?.invalidate()
+        
+        print("Game got harder")
+        if timerInterval >= 0.8 {
+            timerInterval -= timerReductionFactor
+        }
+        if changeInterval >= 8 {
+            changeInterval -= 2
+        }
+        
+        gameTimer = Timer.scheduledTimer(timeInterval: timerInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -104,7 +147,6 @@ class GameScene: SKScene {
     func removeEnemies(all: Bool = false) {
         for node in children {
             if node.name == "target" {
-                print(node.position.x)
                 if node.position.x >= 1100 || all {
                     node.removeFromParent()
                     score -= 1
