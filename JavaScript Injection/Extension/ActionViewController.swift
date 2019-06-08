@@ -15,11 +15,17 @@ class ActionViewController: UIViewController {
     
     var pageTitle = ""
     var pageURL = ""
+    var hostName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save)),
+            UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(load))
+        ]
         
         registerKeyboardObserver()
     
@@ -30,6 +36,21 @@ class ActionViewController: UIViewController {
                     guard let javaScriptValues = itemDictionary[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else { return }
                     self?.pageTitle = javaScriptValues["title"] as? String ?? ""
                     self?.pageURL = javaScriptValues["URL"] as? String ?? ""
+                    
+                    if let urlString = self?.pageURL {
+                        let urlForUserDefaults = URL(string: urlString)
+                        if let hostName = urlForUserDefaults?.host {
+                            self?.hostName = hostName
+                            DispatchQueue.global(qos: .default).async {
+                                let userDefaults = UserDefaults.standard
+                                if let loadedScript = userDefaults.string(forKey: hostName) {
+                                    DispatchQueue.main.async {
+                                        self?.script.text = loadedScript
+                                    }
+                                }
+                            }
+                        }
+                    }
                     
                     DispatchQueue.main.async {
                         self?.title = self?.pageTitle
@@ -65,12 +86,31 @@ class ActionViewController: UIViewController {
 
     @objc func done() {
         let item = NSExtensionItem()
-        let argument: NSDictionary = ["customJavaScript": script.text]
+        let argument: NSDictionary = ["customJavaScript": script.text as Any]
         let webDictionary: NSDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: argument]
         let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
         item.attachments = [customJavaScript]
         
+        if let hostName = self.hostName, let scriptText = script.text {
+            DispatchQueue.global(qos: .background).async {
+                let defaults = UserDefaults.standard
+                defaults.set(scriptText, forKey: hostName)
+            }
+        }
+        
         extensionContext?.completeRequest(returningItems: [item])
+    }
+    
+    @objc func save() {
+        
+    }
+    
+    @objc func load() {
+        let ac = UIAlertController(title: "Load Snippet", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Default", style: .default, handler: { [weak self] (_) in
+            self?.script.text = "alert(document.title);"
+        }))
+        present(ac, animated: true)
     }
 
 }
