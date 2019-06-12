@@ -9,13 +9,16 @@
 import UIKit
 import MobileCoreServices
 
-class ActionViewController: UIViewController {
+class ActionViewController: UIViewController, InformationDelegate {
 
     @IBOutlet var script: UITextView!
     
     var pageTitle = ""
     var pageURL = ""
     var hostName: String?
+    
+    static let SCRIPTS_KEY = "scripts"
+    var scripts = [ScriptObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,8 @@ class ActionViewController: UIViewController {
         ]
         
         registerKeyboardObserver()
+        
+        loadScripts()
     
         if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
             if let itemProvider = inputItem.attachments?.first {
@@ -102,15 +107,53 @@ class ActionViewController: UIViewController {
     }
     
     @objc func save() {
+        let ac = UIAlertController(title: "Enter name:", message: nil, preferredStyle: .alert)
+        ac.addTextField()
         
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        ac.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self, weak ac] (action) in
+            if let name = ac?.textFields?[0].text, let code = self?.script.text {
+                self?.scripts.append(ScriptObject(name: name, code: code))
+                self?.saveScripts()
+            }
+        }))
+        
+        present(ac, animated: true)
     }
     
     @objc func load() {
-        let ac = UIAlertController(title: "Load Snippet", message: nil, preferredStyle: .actionSheet)
-        ac.addAction(UIAlertAction(title: "Default", style: .default, handler: { [weak self] (_) in
-            self?.script.text = "alert(document.title);"
-        }))
-        present(ac, animated: true)
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Scripts") as? ScriptsTableViewController {
+            vc.scripts = self.scripts
+            vc.delegate = self
+            self.present(vc, animated: true)
+            
+        }
+    }
+    
+    func saveScripts() {
+        DispatchQueue.global(qos: .default).async {
+            let userDefaults = UserDefaults.standard
+            if let encodedData = try? PropertyListEncoder().encode(self.scripts) {
+                userDefaults.set(encodedData, forKey: ActionViewController.SCRIPTS_KEY)
+            }
+        }
+    }
+    
+    func loadScripts() {
+        DispatchQueue.global(qos: .default).async {
+            let userDefaults = UserDefaults.standard
+            if let data = userDefaults.value(forKey: ActionViewController.SCRIPTS_KEY) as? Data {
+                DispatchQueue.main.async {
+                    if let loadedScripts = try? PropertyListDecoder().decode(Array<ScriptObject>.self, from: data) {
+                        self.scripts = loadedScripts
+                    }
+                }
+            }
+        }
+    }
+    
+    func selectedScript(script: ScriptObject) {
+        self.script.text = script.code
     }
 
 }
