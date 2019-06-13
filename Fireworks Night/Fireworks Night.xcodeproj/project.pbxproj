@@ -14,6 +14,11 @@
 		AC411EE022B26D0F00F5B856 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC411EDE22B26D0F00F5B856 /* Main.storyboard */; };
 		AC411EE222B26D0F00F5B856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC411EE122B26D0F00F5B856 /* Assets.xcassets */; };
 		AC411EE522B26D0F00F5B856 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC411EE322B26D0F00F5B856 /* LaunchScreen.storyboard */; };
+		AC411EF222B26D9100F5B856 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = AC411EED22B26D9100F5B856 /* spark.png */; };
+		AC411EF322B26D9100F5B856 /* fuse.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC411EEE22B26D9100F5B856 /* fuse.sks */; };
+		AC411EF422B26D9100F5B856 /* explode.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC411EEF22B26D9100F5B856 /* explode.sks */; };
+		AC411EF522B26D9100F5B856 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC411EF022B26D9100F5B856 /* background@2x.png */; };
+		AC411EF622B26D9100F5B856 /* rocket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC411EF122B26D9100F5B856 /* rocket@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		AC411EE122B26D0F00F5B856 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC411EE422B26D0F00F5B856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC411EE622B26D0F00F5B856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC411EED22B26D9100F5B856 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		AC411EEE22B26D9100F5B856 /* fuse.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fuse.sks; sourceTree = "<group>"; };
+		AC411EEF22B26D9100F5B856 /* explode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explode.sks; sourceTree = "<group>"; };
+		AC411EF022B26D9100F5B856 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		AC411EF122B26D9100F5B856 /* rocket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rocket@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +74,23 @@
 				AC411EDC22B26D0F00F5B856 /* GameViewController.swift */,
 				AC411EDE22B26D0F00F5B856 /* Main.storyboard */,
 				AC411EE122B26D0F00F5B856 /* Assets.xcassets */,
+				AC411EEC22B26D9100F5B856 /* Content */,
 				AC411EE322B26D0F00F5B856 /* LaunchScreen.storyboard */,
 				AC411EE622B26D0F00F5B856 /* Info.plist */,
 			);
 			path = "Fireworks Night";
+			sourceTree = "<group>";
+		};
+		AC411EEC22B26D9100F5B856 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				AC411EED22B26D9100F5B856 /* spark.png */,
+				AC411EEE22B26D9100F5B856 /* fuse.sks */,
+				AC411EEF22B26D9100F5B856 /* explode.sks */,
+				AC411EF022B26D9100F5B856 /* background@2x.png */,
+				AC411EF122B26D9100F5B856 /* rocket@2x.png */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +151,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC411EF222B26D9100F5B856 /* spark.png in Resources */,
 				AC411EE022B26D0F00F5B856 /* Main.storyboard in Resources */,
+				AC411EF422B26D9100F5B856 /* explode.sks in Resources */,
+				AC411EF322B26D9100F5B856 /* fuse.sks in Resources */,
 				AC411ED722B26D0F00F5B856 /* GameScene.sks in Resources */,
+				AC411EF622B26D9100F5B856 /* rocket@2x.png in Resources */,
 				AC411EE222B26D0F00F5B856 /* Assets.xcassets in Resources */,
+				AC411EF522B26D9100F5B856 /* background@2x.png in Resources */,
 				AC411EE522B26D0F00F5B856 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
