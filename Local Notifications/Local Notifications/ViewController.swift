@@ -12,9 +12,29 @@ import UserNotifications
 class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     let alarmIdentifier = "alarm"
+    
+    let dayInterval: TimeInterval = 86400
+    
+    let registerWeeklongAlertsButton: UIButton = {
+        let b = UIButton(type: .system)
+        b.translatesAutoresizingMaskIntoConstraints = false
+        b.setTitle("Register Daily Alerts", for: .normal)
+        b.addTarget(self, action: #selector(registerWeeklongNotifications), for: .touchUpInside)
+        return b
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        
+        view.addSubview(registerWeeklongAlertsButton)
+        
+        NSLayoutConstraint.activate([
+            registerWeeklongAlertsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            registerWeeklongAlertsButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Register", style: .plain, target: self, action: #selector(registerLocal))
         
@@ -35,8 +55,26 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     @objc func scheduleLocal() {
         registerCategories()
-        let center = UNUserNotificationCenter.current()
         
+        let request = createNotificationRequest(timeInterval: 5)
+        registerNotificationWith(request: request)
+    }
+    
+    @objc func registerWeeklongNotifications() {
+        for i in 1...7 {
+            let request = createNotificationRequest(timeInterval: TimeInterval(i) * dayInterval)
+            registerNotificationWith(request: request)
+        }
+    }
+    
+    func registerNotificationWith(request: UNNotificationRequest) {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        
+        center.add(request)
+    }
+    
+    func createNotificationRequest(timeInterval: TimeInterval) ->UNNotificationRequest {
         let content = UNMutableNotificationContent()
         content.title = "Late wake up call"
         content.body = "The early bird catches the worm, but the second mouse gets the cheese."
@@ -44,15 +82,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         content.userInfo = ["customData": "fizzbuzz"]
         content.sound = UNNotificationSound.default
         
-        var dateComponents = DateComponents()
-        dateComponents.hour = 9
-        dateComponents.minute = 13
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        center.removeAllPendingNotificationRequests()
-        
-        center.add(request)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+        return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
     }
     
     func registerCategories() {
@@ -60,8 +91,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         center.delegate = self
         
         let show = UNNotificationAction(identifier: "show", title: "Tell me more", options: .foreground)
-        let mute = UNNotificationAction(identifier: "seen", title: "I have seen it", options: .destructive)
-        let category = UNNotificationCategory(identifier: alarmIdentifier, actions: [show, mute], intentIdentifiers: [])
+        let mute = UNNotificationAction(identifier: "mute", title: "I have seen it", options: .destructive)
+        let later = UNNotificationAction(identifier: "later", title: "Remind me later", options: .destructive)
+        let category = UNNotificationCategory(identifier: alarmIdentifier, actions: [show, mute, later], intentIdentifiers: [])
         
         center.setNotificationCategories([category])
     }
@@ -74,17 +106,29 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
             
             switch response.actionIdentifier {
             case UNNotificationDefaultActionIdentifier:
-                print("Default identifier")
+                showAlertControllerWith(title: "Default identifier", message: "You opened the notification with the default identifier")
             case "show":
-                print("Show more information...")
+                showAlertControllerWith(title: "Showing more information", message: "You want more information? Elephants can't jump!")
+            case "later":
+                let request = self.createNotificationRequest(timeInterval: 86400)
+                registerNotificationWith(request: request)
+                print("registered notification request")
             case "mute":
-                print("Seen but not opened")
+                print("muted")
+                showAlertControllerWith(title: "Mute", message: "Mute it like it's hot!")
             default:
                 break
             }
         }
         
         completionHandler()
+    }
+    
+    func showAlertControllerWith(title: String, message: String) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        self.present(ac, animated: true)
     }
 
 }
