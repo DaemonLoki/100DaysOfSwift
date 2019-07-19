@@ -19,6 +19,14 @@ class OverviewViewController: UIViewController {
         }
     }
     
+    let bgImageView: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "paper-bg"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = UIView.ContentMode.scaleAspectFill
+        iv.alpha = 0.7
+        return iv
+    }()
+    
     let tableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -75,15 +83,23 @@ class OverviewViewController: UIViewController {
     
     func setupLayout() {
         view.backgroundColor = .white
+        tableView.backgroundColor = .clear
+        tableView.backgroundView = bgImageView
         
         bottomBarView.addSubview(noteCountLabel)
         bottomBarView.addSubview(createNoteButton)
         
+        view.addSubview(bgImageView)
         view.addSubview(bottomBarView)
         view.addSubview(tableView)
         
-        
         NSLayoutConstraint.activate([
+            
+            bgImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            bgImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bgImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bgImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -172,6 +188,18 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource {
         let note = notes[indexPath.row]
         
         openDetailViewController(note: note)
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (action, indexPath) in
+            
+            self?.notes.remove(at: indexPath.row)
+            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            guard let notes = self?.notes else { return }
+            self?.notesHandler?.saveNotes(notes: notes)
+        }
+        return [delete]
     }
     
     fileprivate func splitTextToTitleAndContent(text: String) -> (String, String?) {

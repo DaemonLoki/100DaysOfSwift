@@ -12,6 +12,15 @@ class DetailViewController: UIViewController {
     
     var note: Note?
     var notesHandler: NotesHandler?
+    var changesMade = false
+    
+    let bgImageView: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "paper-bg"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFill
+        iv.alpha = 0.7
+        return iv
+    }()
     
     var lastSavedLabel: UILabel = {
         let l = UILabel()
@@ -26,6 +35,7 @@ class DetailViewController: UIViewController {
         var t = UITextView()
         t.translatesAutoresizingMaskIntoConstraints = false
         t.font = UIFont.systemFont(ofSize: 18.0)
+        t.backgroundColor = .clear
         return t
     }()
 
@@ -55,21 +65,23 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        if let note = note, let notesHandler = notesHandler {
-            note.text = textView.text
-            note.timeSaved = Date()
-            notesHandler.saveNote(note: note)
-        }
+        saveNoteIfChanged()
         super.viewWillDisappear(true)
     }
     
     func setupLayout() {
         view.backgroundColor = .white
         
+        view.addSubview(bgImageView)
         view.addSubview(lastSavedLabel)
         view.addSubview(textView)
         
         NSLayoutConstraint.activate([
+            
+            bgImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            bgImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bgImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bgImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             lastSavedLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             lastSavedLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: .SIDE_MARGIN),
@@ -80,6 +92,17 @@ class DetailViewController: UIViewController {
             textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -.SIDE_MARGIN),
             textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -.SIDE_MARGIN)
         ])
+    }
+    
+    func saveNoteIfChanged() {
+        if let note = note, let notesHandler = notesHandler {
+            if note.text == textView.text {
+                return
+            }
+            note.text = textView.text
+            note.timeSaved = Date()
+            notesHandler.saveNote(note: note)
+        }
     }
     
     @objc func shareNote() {
@@ -107,6 +130,7 @@ extension DetailViewController: UITextViewDelegate {
             navigationItem.rightBarButtonItems?.remove(at: 0)
         }
         endEditing()
+        saveNoteIfChanged()
     }
     
 }

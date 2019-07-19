@@ -72,6 +72,8 @@ class NoteTableViewCell: UITableViewCell {
     }
     
     func setupLayout() {
+        self.backgroundColor = .clear
+        
         contentView.addSubview(titleLabel)
         contentView.addSubview(dateLabel)
         contentView.addSubview(contentLabel)
