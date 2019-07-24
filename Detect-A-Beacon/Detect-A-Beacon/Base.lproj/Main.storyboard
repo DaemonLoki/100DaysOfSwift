@@ -18,21 +18,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNKNOWN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMq-K8-Geq">
-                                <rect key="frame" x="111.5" y="424" width="191.5" height="48"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvu-Bi-AZt">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="5L8-bV-eOm"/>
+                                    <constraint firstAttribute="width" constant="250" id="JTO-ek-ExA"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNKNOWN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMq-K8-Geq">
+                                <rect key="frame" x="135" y="430" width="144.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="bvu-Bi-AZt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="09d-VD-RvB"/>
+                            <constraint firstItem="bvu-Bi-AZt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qz8-9G-PMm"/>
                             <constraint firstItem="qMq-K8-Geq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="VlW-3S-QBF"/>
                             <constraint firstItem="qMq-K8-Geq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tBU-Ts-hLV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="circleView" destination="bvu-Bi-AZt" id="B4z-ut-L1N"/>
                         <outlet property="distanceReading" destination="qMq-K8-Geq" id="egz-nb-cba"/>
                     </connections>
                 </viewController>
