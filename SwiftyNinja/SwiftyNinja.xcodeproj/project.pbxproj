@@ -31,6 +31,9 @@
 		ACBA952B22EF1E0C00F7BC69 /* swoosh3.caf in Resources */ = {isa = PBXBuildFile; fileRef = ACBA951A22EF1E0C00F7BC69 /* swoosh3.caf */; };
 		ACBA952C22EF1E0C00F7BC69 /* swoosh2.caf in Resources */ = {isa = PBXBuildFile; fileRef = ACBA951B22EF1E0C00F7BC69 /* swoosh2.caf */; };
 		ACBA952D22EF1E0C00F7BC69 /* swoosh1.caf in Resources */ = {isa = PBXBuildFile; fileRef = ACBA951C22EF1E0C00F7BC69 /* swoosh1.caf */; };
+		ACEAC5AB22F1CA2600350F42 /* ghibi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACEAC5AA22F1CA2600350F42 /* ghibi@2x.png */; };
+		ACEAC5AD22F1CA6900350F42 /* fast_enemy@2x.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = ACEAC5AC22F1CA6900350F42 /* fast_enemy@2x.jpeg */; };
+		ACEAC5AF22F1CB4F00350F42 /* fast_penguin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACEAC5AE22F1CB4E00350F42 /* fast_penguin@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		ACBA951A22EF1E0C00F7BC69 /* swoosh3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = swoosh3.caf; sourceTree = "<group>"; };
 		ACBA951B22EF1E0C00F7BC69 /* swoosh2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = swoosh2.caf; sourceTree = "<group>"; };
 		ACBA951C22EF1E0C00F7BC69 /* swoosh1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = swoosh1.caf; sourceTree = "<group>"; };
+		ACEAC5AA22F1CA2600350F42 /* ghibi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ghibi@2x.png"; sourceTree = "<group>"; };
+		ACEAC5AC22F1CA6900350F42 /* fast_enemy@2x.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "fast_enemy@2x.jpeg"; sourceTree = "<group>"; };
+		ACEAC5AE22F1CB4E00350F42 /* fast_penguin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_penguin@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +114,11 @@
 		ACBA950B22EF1E0C00F7BC69 /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				ACEAC5AC22F1CA6900350F42 /* fast_enemy@2x.jpeg */,
+				ACEAC5AA22F1CA2600350F42 /* ghibi@2x.png */,
 				ACBA950C22EF1E0C00F7BC69 /* sliceFuse.sks */,
 				ACBA950D22EF1E0C00F7BC69 /* sliceLife@2x.png */,
+				ACEAC5AE22F1CB4E00350F42 /* fast_penguin@2x.png */,
 				ACBA950E22EF1E0C00F7BC69 /* sliceBomb@2x.png */,
 				ACBA950F22EF1E0C00F7BC69 /* sliceLifeGone@2x.png */,
 				ACBA951022EF1E0C00F7BC69 /* spark.png */,
@@ -190,7 +199,9 @@
 				ACBA952C22EF1E0C00F7BC69 /* swoosh2.caf in Resources */,
 				ACBA94FF22EF1D6400F7BC69 /* Main.storyboard in Resources */,
 				ACBA952A22EF1E0C00F7BC69 /* penguin@2x.png in Resources */,
+				ACEAC5AF22F1CB4F00350F42 /* fast_penguin@2x.png in Resources */,
 				ACBA952422EF1E0C00F7BC69 /* launch.caf in Resources */,
+				ACEAC5AB22F1CA2600350F42 /* ghibi@2x.png in Resources */,
 				ACBA952B22EF1E0C00F7BC69 /* swoosh3.caf in Resources */,
 				ACBA952122EF1E0C00F7BC69 /* spark.png in Resources */,
 				ACBA951E22EF1E0C00F7BC69 /* sliceLife@2x.png in Resources */,
@@ -201,6 +212,7 @@
 				ACBA951D22EF1E0C00F7BC69 /* sliceFuse.sks in Resources */,
 				ACBA952622EF1E0C00F7BC69 /* sliceBackground@2x.png in Resources */,
 				ACBA950122EF1D6500F7BC69 /* Assets.xcassets in Resources */,
+				ACEAC5AD22F1CA6900350F42 /* fast_enemy@2x.jpeg in Resources */,
 				ACBA952D22EF1E0C00F7BC69 /* swoosh1.caf in Resources */,
 				ACBA952322EF1E0C00F7BC69 /* whack.caf in Resources */,
 				ACBA952822EF1E0C00F7BC69 /* sliceBombFuse.caf in Resources */,
