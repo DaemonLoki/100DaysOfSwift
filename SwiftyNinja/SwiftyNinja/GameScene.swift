@@ -302,6 +302,26 @@ class GameScene: SKScene {
             livesImages[1].texture = SKTexture(imageNamed: "sliceLifeGone")
             livesImages[2].texture = SKTexture(imageNamed: "sliceLifeGone")
         }
+        
+        showGameEndedLabels()
+    }
+    
+    func showGameEndedLabels() {
+        let gameEndedLabel = SKLabelNode(fontNamed: "Chalkduster")
+        gameEndedLabel.horizontalAlignmentMode = .center
+        gameEndedLabel.fontSize = 80
+        gameEndedLabel.text = "Game Over"
+        addChild(gameEndedLabel)
+        
+        gameEndedLabel.position = CGPoint(x: 512, y: 400)
+        
+        let finalScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        finalScoreLabel.horizontalAlignmentMode = .center
+        finalScoreLabel.fontSize = 60
+        finalScoreLabel.text = "Final score: \(score)"
+        addChild(finalScoreLabel)
+        
+        finalScoreLabel.position = CGPoint(x: 512, y: 320)
     }
     
     func redrawActiveSlice() {
