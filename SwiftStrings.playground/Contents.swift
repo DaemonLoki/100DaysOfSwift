@@ -97,3 +97,41 @@ attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 16), range
 attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 24), range: NSRange(location: 8, length: 1))
 attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 32), range: NSRange(location: 10, length: 4))
 attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 40), range: NSRange(location: 15, length: 6))
+
+// ----------
+// Challenges
+// ----------
+
+extension String {
+    
+    // Challenge 1
+    func withPrefix(_ prefix: String) -> String {
+        if self.hasPrefix(prefix) { return self }
+        
+        return prefix + self
+    }
+    
+    // Challenge 2
+    func isNumeric() -> Bool {
+        return Double(self) != nil ? true : false
+    }
+    
+    // Challenge 3
+    func lines() -> [String] {
+        return self.split(separator: "\n").map({ String($0) })
+    }
+    
+}
+
+// Testing challenge 1
+"pet".withPrefix("car")
+"testPrefix".withPrefix("test")
+
+// Testing challenge 2
+"Test".isNumeric()
+"23".isNumeric()
+"123.123".isNumeric()
+
+// Testing challenge 3
+"This\nis\na\ntest".lines()
+"Should\nreturn\n4\nlines".lines().count
