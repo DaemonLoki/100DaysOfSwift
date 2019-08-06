@@ -71,6 +71,9 @@ extension ViewController: MCSessionDelegate, MCBrowserViewControllerDelegate {
             
         case .notConnected:
             print("Not connected: \(peerId.displayName)")
+            let ac = UIAlertController(title: "Disconnected", message: "\(peerId.displayName) has disconnected.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
             
         @unknown default:
             print("Unknown state received: \(peerId.displayName)")
