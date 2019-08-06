@@ -29,7 +29,10 @@ class ViewController: UICollectionViewController {
             UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(composeMessage))
         ]
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt)),
+            UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(showPeers))
+        ]
     }
     
     @objc func importPicture() {
@@ -74,6 +77,18 @@ class ViewController: UICollectionViewController {
         ac.addAction(UIAlertAction(title: "Cancel", style: .destructive))
         
         present(ac, animated: true)
+    }
+    
+    @objc func showPeers() {
+        guard let session = mcSession else { return }
+        
+        if session.connectedPeers.count > 0 {
+            let peersList = session.connectedPeers.map({ $0.displayName }).joined(separator: "\n")
+            let ac = UIAlertController(title: "Connected peers", message: peersList, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            present(ac, animated: true)
+        }
     }
     
     func startHosting(action: UIAlertAction) {
