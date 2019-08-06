@@ -24,7 +24,10 @@ class ViewController: UICollectionViewController {
         mcSession?.delegate = self
         
         title = "Selfie Share"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture)),
+            UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(composeMessage))
+        ]
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
     }
@@ -34,6 +37,34 @@ class ViewController: UICollectionViewController {
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
+    }
+    
+    @objc func composeMessage() {
+        let ac = UIAlertController(title: "Send messag", message: "Please enter the message you want to send:", preferredStyle: .alert)
+        ac.addTextField()
+        ac.addAction(UIAlertAction(title: "Send", style: .default, handler: { [unowned ac, weak self] (_) in
+            guard let textField = ac.textFields?[0] else { return }
+            if let messageToSend = textField.text {
+                if messageToSend.isEmpty { return }
+                self?.sendMessage(messageToSend)
+            }
+        }))
+    }
+    
+    func sendMessage(_ message: String) {
+        guard let session = mcSession else { return }
+        
+        if session.connectedPeers.count > 0 {
+            let messageData = Data(message.utf8)
+            do {
+                try session.send(messageData, toPeers: session.connectedPeers, with: .reliable)
+            } catch {
+                let ac = UIAlertController(title: "Send error", message: error.localizedDescription, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                
+                present(ac, animated: true)
+            }
+        }
     }
     
     @objc func showConnectionPrompt() {
@@ -85,7 +116,13 @@ extension ViewController: MCSessionDelegate, MCBrowserViewControllerDelegate {
             if let image = UIImage(data: data) {
                 self?.images.insert(image, at: 0)
                 self?.collectionView.reloadData()
+                return
             }
+            let message = String(decoding: data, as: UTF8.self)
+            let ac = UIAlertController(title: "Received message", message: "\(peerID.displayName): \(message)", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            self?.present(ac, animated: true)
         }
     }
     
