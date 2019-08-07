@@ -20,6 +20,13 @@ enum CollisionTypes: UInt32 {
 class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
+        let background = SKSpriteNode(imageNamed: "background.jpg")
+        background.position = CGPoint(x: 512, y: 384)
+        background.blendMode = .replace
+        background.zPosition = -1
+        addChild(background)
+        
+        loadLevel()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -44,13 +51,14 @@ class GameScene: SKScene {
                     let wallNode = createWallNodeAt(position)
                     addChild(wallNode)
                 } else if letter == "v" {
-                    // load vortex
                     let vortexNode = createVortexNodeAt(position)
                     addChild(vortexNode)
                 } else if letter == "s" {
-                    // load star
+                    let starNode = createStarNodeAt(position)
+                    addChild(starNode)
                 } else if letter == "f" {
-                    // load finish
+                    let finishNode = createFinishNodeAt(position)
+                    addChild(finishNode)
                 } else if letter == " " {
                     // empty space, do nothing
                 } else {
@@ -79,6 +87,32 @@ class GameScene: SKScene {
         node.physicsBody?.isDynamic = false
         
         node.physicsBody?.categoryBitMask = CollisionTypes.vortex.rawValue
+        node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+        node.physicsBody?.collisionBitMask = 0
+        return node
+    }
+    
+    func createStarNodeAt(_ position: CGPoint) -> SKSpriteNode {
+        let node = SKSpriteNode(imageNamed: "star")
+        node.name = "star"
+        node.position = position
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+        node.physicsBody?.isDynamic = false
+        
+        node.physicsBody?.categoryBitMask = CollisionTypes.star.rawValue
+        node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+        node.physicsBody?.collisionBitMask = 0
+        return node
+    }
+    
+    func createFinishNodeAt(_ position: CGPoint) -> SKSpriteNode {
+        let node = SKSpriteNode(imageNamed: "finish")
+        node.name = "finish"
+        node.position = position
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+        node.physicsBody?.isDynamic = false
+        
+        node.physicsBody?.categoryBitMask = CollisionTypes.finish.rawValue
         node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
         node.physicsBody?.collisionBitMask = 0
         return node
