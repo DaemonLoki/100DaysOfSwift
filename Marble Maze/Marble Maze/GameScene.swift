@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import CoreMotion
 
 enum CollisionTypes: UInt32 {
     case player = 1
@@ -20,6 +21,8 @@ enum CollisionTypes: UInt32 {
 class GameScene: SKScene {
     
     var player: SKSpriteNode!
+    var lastTouchPosition: CGPoint?
+    var motionManager: CMMotionManager!
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background.jpg")
@@ -27,6 +30,9 @@ class GameScene: SKScene {
         background.blendMode = .replace
         background.zPosition = -1
         addChild(background)
+        
+        motionManager = CMMotionManager()
+        motionManager.startAccelerometerUpdates()
         
         loadLevel()
         
@@ -36,6 +42,33 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        lastTouchPosition = location
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        lastTouchPosition = location
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        lastTouchPosition = nil
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        #if targetEnvironment(simulator)
+        if let currentTouch = lastTouchPosition {
+            let diff = CGPoint(x: currentTouch.x - player.position.x, y: currentTouch.y - player.position.y)
+            print("Gravity: x: \(diff.x), y: \(diff.y)")
+            physicsWorld.gravity = CGVector(dx: diff.x / 100, dy: -diff.x / 100)
+        }
+        #else
+        if let accelerometerData = motionManager.accelerometerData {
+            physicsWorld.gravity = CGVector(dx: accelerometerData.acceleration.y * -50, dy: accelerometerData.acceleration.x * 50)
+        }
+        #endif
     }
     
     func createPlayer() {
