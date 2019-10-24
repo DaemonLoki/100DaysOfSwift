@@ -109,7 +109,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             node.removeFromParent()
             score += 1
         } else if node.name == "finish" {
+            // Show finished slogan
+            let gameEndedLabel = SKLabelNode(fontNamed: "Chalkduster")
+            gameEndedLabel.horizontalAlignmentMode = .center
+            gameEndedLabel.fontSize = 80
+            gameEndedLabel.text = "You Win!"
+            addChild(gameEndedLabel)
             
+            gameEndedLabel.position = CGPoint(x: 512, y: 400)
+            
+            isGameOver = true
         }
     }
     
