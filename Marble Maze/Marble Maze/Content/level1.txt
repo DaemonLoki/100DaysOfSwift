@@ -1,5 +1,5 @@
 xxxxxxxxxxxxxxxx
-x xs      xs  sx
+x xs     txs tsx
 x xxxxxx vx vv x
 x         x vv x
 x xxx xxxxx    x

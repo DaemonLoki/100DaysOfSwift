@@ -16,12 +16,16 @@ enum CollisionTypes: UInt32 {
     case star = 4
     case vortex = 8
     case finish = 16
+    case teleport = 32
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: SKSpriteNode!
     var scoreLabel: SKLabelNode!
+    
+    var teleportNodes: [SKSpriteNode] = []
+    var teleportInCooldown = false
     
     var score = 0 {
         didSet {
@@ -119,7 +123,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameEndedLabel.position = CGPoint(x: 512, y: 400)
             
             isGameOver = true
+        } else if node.name == "teleport" {
+            if teleportInCooldown { return }
+            print("telepooooort")
+            
+            guard let spriteNode = node as? SKSpriteNode else { return }
+            guard let destinationNode = findTeleportDestination(for: spriteNode) else { return }
+            
+            let move = SKAction.move(to: spriteNode.position, duration: 0.25)
+            let scaleDown = SKAction.scale(to: 0.0001, duration: 0.25)
+            let teleport = SKAction.move(to: destinationNode.position, duration: 0.1)
+            let scaleBigger = SKAction.scale(to: 1.5, duration: 0.25)
+            let scaleNormal = SKAction.scale(to: 1, duration: 0.25)
+            let sequence = SKAction.sequence([move, scaleDown, teleport, scaleBigger, scaleNormal])
+            
+            teleportInCooldown = true
+            player.physicsBody?.isDynamic = false
+            player.run(sequence)
+            player.physicsBody?.isDynamic = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+                self?.teleportInCooldown = false
+            }
         }
+    }
+    
+    func findTeleportDestination(for node: SKSpriteNode) -> SKSpriteNode? {
+        for n in teleportNodes {
+            if n != node {
+                return n
+            }
+        }
+        return nil
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -142,7 +176,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.linearDamping = 0.5
         
         player.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
-        player.physicsBody?.contactTestBitMask = CollisionTypes.star.rawValue | CollisionTypes.vortex.rawValue | CollisionTypes.finish.rawValue
+        player.physicsBody?.contactTestBitMask = CollisionTypes.star.rawValue | CollisionTypes.vortex.rawValue | CollisionTypes.finish.rawValue | CollisionTypes.teleport.rawValue
         player.physicsBody?.collisionBitMask = CollisionTypes.wall.rawValue
         
         addChild(player)
@@ -164,17 +198,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let position = CGPoint(x: (64 * column) + 32, y: (64 * row) + 32)
                 
                 if letter == "x" {
-                    let wallNode = createWallNodeAt(position)
+                    let wallNode = createWallNode(at: position)
                     addChild(wallNode)
                 } else if letter == "v" {
-                    let vortexNode = createVortexNodeAt(position)
+                    let vortexNode = createVortexNode(at: position)
                     addChild(vortexNode)
                 } else if letter == "s" {
-                    let starNode = createStarNodeAt(position)
+                    let starNode = createStarNode(at: position)
                     addChild(starNode)
                 } else if letter == "f" {
-                    let finishNode = createFinishNodeAt(position)
+                    let finishNode = createFinishNode(at: position)
                     addChild(finishNode)
+                } else if letter == "t" {
+                    let teleportNode = createTeleportNode(at: position)
+                    teleportNodes.append(teleportNode)
+                    addChild(teleportNode)
                 } else if letter == " " {
                     // empty space, do nothing
                 } else {
@@ -184,7 +222,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func createWallNodeAt(_ position: CGPoint) -> SKSpriteNode {
+    func createWallNode(at position: CGPoint) -> SKSpriteNode {
         let node = SKSpriteNode(imageNamed: "block")
         node.position = position
         
@@ -194,7 +232,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return node
     }
     
-    func createVortexNodeAt(_ position: CGPoint) -> SKSpriteNode {
+    func createVortexNode(at position: CGPoint) -> SKSpriteNode {
         let node = SKSpriteNode(imageNamed: "vortex")
         node.name = "vortex"
         node.position = position
@@ -208,7 +246,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return node
     }
     
-    func createStarNodeAt(_ position: CGPoint) -> SKSpriteNode {
+    func createStarNode(at position: CGPoint) -> SKSpriteNode {
         let node = SKSpriteNode(imageNamed: "star")
         node.name = "star"
         node.position = position
@@ -221,7 +259,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return node
     }
     
-    func createFinishNodeAt(_ position: CGPoint) -> SKSpriteNode {
+    func createFinishNode(at position: CGPoint) -> SKSpriteNode {
         let node = SKSpriteNode(imageNamed: "finish")
         node.name = "finish"
         node.position = position
@@ -229,6 +267,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         node.physicsBody?.isDynamic = false
         
         node.physicsBody?.categoryBitMask = CollisionTypes.finish.rawValue
+        node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+        node.physicsBody?.collisionBitMask = 0
+        return node
+    }
+    
+    func createTeleportNode(at position: CGPoint) -> SKSpriteNode {
+        let node = SKSpriteNode(imageNamed: "teleport")
+        node.name = "teleport"
+        node.position = position
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+        node.physicsBody?.isDynamic = false
+        
+        let rotateAction = SKAction.rotate(byAngle: .pi, duration: 0.8)
+        let scaleUpAction = SKAction.scale(to: 1.2, duration: 0.5)
+        let scaleDownAction = SKAction.scale(to: 0.8, duration: 0.5)
+        let scaleCombo = SKAction.sequence([scaleUpAction, scaleDownAction])
+        let actionGroup = SKAction.group([rotateAction, scaleCombo])
+        node.run(SKAction.repeatForever(actionGroup))
+        
+        node.physicsBody?.categoryBitMask = CollisionTypes.teleport.rawValue
         node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
         node.physicsBody?.collisionBitMask = 0
         return node

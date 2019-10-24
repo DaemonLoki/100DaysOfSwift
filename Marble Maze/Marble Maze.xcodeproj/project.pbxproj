@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC99FCD22362333A002B8941 /* teleport@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC99FCD12362333A002B8941 /* teleport@2x.png */; };
 		ACF4EFA322FB7402000A51E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4EFA222FB7402000A51E7 /* AppDelegate.swift */; };
 		ACF4EFA522FB7402000A51E7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACF4EFA422FB7402000A51E7 /* GameScene.sks */; };
 		ACF4EFA922FB7402000A51E7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4EFA822FB7402000A51E7 /* GameScene.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC99FCD12362333A002B8941 /* teleport@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "teleport@2x.png"; sourceTree = "<group>"; };
 		ACF4EF9F22FB7402000A51E7 /* Marble Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marble Maze.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF4EFA222FB7402000A51E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACF4EFA422FB7402000A51E7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				ACF4EFBB22FB746B000A51E7 /* finish@2x.png */,
 				ACF4EFBC22FB746B000A51E7 /* level1.txt */,
 				ACF4EFBD22FB746B000A51E7 /* star@2x.png */,
+				AC99FCD12362333A002B8941 /* teleport@2x.png */,
 				ACF4EFBE22FB746B000A51E7 /* player@2x.png */,
 				ACF4EFBF22FB746B000A51E7 /* block@2x.png */,
 				ACF4EFC022FB746B000A51E7 /* vortex@2x.png */,
@@ -157,6 +160,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC99FCD22362333A002B8941 /* teleport@2x.png in Resources */,
 				ACF4EFAE22FB7402000A51E7 /* Main.storyboard in Resources */,
 				ACF4EFC822FB746B000A51E7 /* background@2x.jpg in Resources */,
 				ACF4EFC622FB746B000A51E7 /* block@2x.png in Resources */,
