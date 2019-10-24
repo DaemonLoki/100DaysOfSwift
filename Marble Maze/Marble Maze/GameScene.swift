@@ -81,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let currentTouch = lastTouchPosition {
             let diff = CGPoint(x: currentTouch.x - player.position.x, y: currentTouch.y - player.position.y)
             print("Gravity: x: \(diff.x), y: \(diff.y)")
-            physicsWorld.gravity = CGVector(dx: diff.x / 100, dy: -diff.x / 100)
+            physicsWorld.gravity = CGVector(dx: diff.x / 100, dy: diff.y / 100)
         }
         #else
         if let accelerometerData = motionManager.accelerometerData {
