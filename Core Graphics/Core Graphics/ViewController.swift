@@ -12,22 +12,24 @@ class ViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     
-    var currentDrawType = 0
+    var currentDrawType = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drawRectangle()
+        drawEmojiAlt()
     }
 
     @IBAction func redrawTapped(_ sender: Any) {
         currentDrawType += 1
         
         if currentDrawType > 5 {
-            currentDrawType = 0
+            currentDrawType = -1
         }
         
         switch currentDrawType {
+        case -1:
+            drawEmoji()
         case 0:
             drawRectangle()
         case 1:
@@ -43,6 +45,41 @@ class ViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    func drawEmoji() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let img = renderer.image { (ctx) in
+            let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512).insetBy(dx: 80, dy: 80)
+            
+            ctx.cgContext.setFillColor(UIColor.black.cgColor)
+            ctx.cgContext.setStrokeColor(UIColor.red.cgColor)
+            ctx.cgContext.setLineWidth(30)
+            
+            ctx.cgContext.addEllipse(in: rectangle)
+            ctx.cgContext.drawPath(using: .fillStroke)
+        }
+        
+        imageView.image = img
+    }
+    
+    func drawEmojiAlt() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let img = renderer.image { (ctx) in
+            ctx.cgContext.move(to: CGPoint(x: 80, y: 80))
+            ctx.cgContext.addLine(to: CGPoint(x: 432, y: 432))
+            ctx.cgContext.move(to: CGPoint(x: 80, y: 432))
+            ctx.cgContext.addLine(to: CGPoint(x: 432, y: 80))
+            
+            ctx.cgContext.setStrokeColor(UIColor.red.cgColor)
+            ctx.cgContext.setLineWidth(CGFloat(40))
+            ctx.cgContext.setLineCap(.round)
+            ctx.cgContext.strokePath()
+        }
+        
+        imageView.image = img
     }
     
     func drawRectangle() {
