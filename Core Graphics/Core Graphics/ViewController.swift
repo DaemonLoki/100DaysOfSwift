@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drawEmojiAlt()
+        drawTwin()
     }
 
     @IBAction func redrawTapped(_ sender: Any) {
@@ -75,6 +75,43 @@ class ViewController: UIViewController {
             
             ctx.cgContext.setStrokeColor(UIColor.red.cgColor)
             ctx.cgContext.setLineWidth(CGFloat(40))
+            ctx.cgContext.setLineCap(.round)
+            ctx.cgContext.strokePath()
+        }
+        
+        imageView.image = img
+    }
+    
+    func drawTwin() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let img = renderer.image { (ctx) in
+            // draw T
+            ctx.cgContext.move(to: CGPoint(x: 20, y: 20))
+            ctx.cgContext.addLine(to: CGPoint(x: 120, y: 20))
+            
+            ctx.cgContext.move(to: CGPoint(x: 70, y: 20))
+            ctx.cgContext.addLine(to: CGPoint(x: 70, y: 200))
+            
+            // draw W
+            ctx.cgContext.move(to: CGPoint(x: 140, y: 40))
+            ctx.cgContext.addLine(to: CGPoint(x: 170, y: 220))
+            ctx.cgContext.addLine(to: CGPoint(x: 210, y: 80))
+            ctx.cgContext.addLine(to: CGPoint(x: 250, y: 220))
+            ctx.cgContext.addLine(to: CGPoint(x: 290, y: 40))
+            
+            // draw I
+            ctx.cgContext.move(to: CGPoint(x: 320, y: 80))
+            ctx.cgContext.addLine(to: CGPoint(x: 320, y: 300))
+            
+            // draw N
+            ctx.cgContext.move(to: CGPoint(x: 370, y: 350))
+            ctx.cgContext.addLine(to: CGPoint(x: 370, y: 150))
+            ctx.cgContext.addLine(to: CGPoint(x: 450, y: 330))
+            ctx.cgContext.addLine(to: CGPoint(x: 450, y: 120))
+            
+            ctx.cgContext.setStrokeColor(UIColor.red.cgColor)
+            ctx.cgContext.setLineWidth(CGFloat(20))
             ctx.cgContext.setLineCap(.round)
             ctx.cgContext.strokePath()
         }
