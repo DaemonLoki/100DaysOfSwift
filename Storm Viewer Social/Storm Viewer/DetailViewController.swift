@@ -45,7 +45,10 @@ class DetailViewController: UIViewController {
     }
     
     @objc func shareTapped() {
-        guard let image = imageView.image?.jpegData(compressionQuality: 0.8), let name = selectedImage else {
+        guard let imageFromImageView = imageView.image else { return }
+        let watermarkedImage = watermarkImage(imageFromImageView)
+        
+        guard let image = watermarkedImage.jpegData(compressionQuality: 0.8), let name = selectedImage else {
             print("No image found")
             return
         }
@@ -53,5 +56,32 @@ class DetailViewController: UIViewController {
         let vc = UIActivityViewController(activityItems: [image, name], applicationActivities: [])
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true)
+    }
+    
+    func watermarkImage(_ image: UIImage) -> UIImage {
+        let size = image.size
+        let renderer = UIGraphicsImageRenderer(size: size)
+        
+        let img = renderer.image { (ctx) in
+            image.draw(at: CGPoint(x: 0, y: 0))
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            
+            let attrs: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 40),
+                .paragraphStyle: paragraphStyle,
+                NSAttributedString.Key.foregroundColor: UIColor.red
+            ]
+            
+            let string = "From Storm Viewer"
+            let attributedString = NSAttributedString(string: string, attributes: attrs)
+            
+            attributedString.draw(with: CGRect(x: 0, y: 40, width: size.width, height: 50), options: .usesLineFragmentOrigin, context: nil)
+            
+            
+        }
+        
+        return img
     }
 }
