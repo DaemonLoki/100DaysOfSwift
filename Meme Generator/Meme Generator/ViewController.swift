@@ -8,9 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var imageView: UIImageView!
+    
+    var selectedImage: UIImage?
+    var topText: String = ""
+    var bottomText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func importPicture(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
     }
     
     @IBAction func setTopText(_ sender: Any) {
@@ -31,6 +39,26 @@ class ViewController: UIViewController {
     
     @objc func shareImage() {
         
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+        
+        dismiss(animated: true)
+        
+        selectedImage = image
+        drawMeme()
+    }
+    
+    func drawMeme() {
+        guard let selectedImage = selectedImage else { return }
+        let renderer = UIGraphicsImageRenderer(size: selectedImage.size)
+        
+        let image = renderer.image { (ctx) in
+            selectedImage.draw(at: CGPoint(x: 0, y: 0))
+        }
+        
+        imageView.image = image
     }
     
 }
