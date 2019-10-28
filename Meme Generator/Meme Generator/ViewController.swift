@@ -14,7 +14,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        title = "Meme Generator"
+        
+        navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
     }
 
     @IBAction func importPicture(_ sender: Any) {
@@ -24,6 +27,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func setBottomText(_ sender: Any) {
+    }
+    
+    @objc func shareImage() {
+        
     }
     
 }
