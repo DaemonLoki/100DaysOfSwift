@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet var secret: UITextView!
     
     let messageKey = "SecretMessage"
+    let passwordKey = "PasswordKey"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,33 @@ class ViewController: UIViewController {
                 }
             }
         } else {
+            if let pw = KeychainWrapper.standard.string(forKey: passwordKey) {
+                let ac = UIAlertController(title: "Enter password", message: "Please enter the password you previously set.", preferredStyle: .alert)
+                ac.addTextField()
+                ac.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+                ac.addAction(UIAlertAction(title: "Unlock", style: .default, handler: { [weak self] (action) in
+                    guard let enteredPw = ac.textFields?[0].text else { return }
+                    
+                    if pw == enteredPw {
+                        self?.unlockSecretMessage()
+                    } else {
+                        self?.showWrongPassword()
+                    }
+                }))
+                present(ac, animated: true)
+            } else {
+                let ac = UIAlertController(title: "Protect your message", message: "Please enter a password:", preferredStyle: .alert)
+                ac.addTextField()
+                ac.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+                ac.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] (action) in
+                    guard let enteredText = ac.textFields?[0].text else { return }
+                    
+                    guard let self = self else { return }
+                    KeychainWrapper.standard.set(enteredText, forKey: self.passwordKey)
+                    self.unlockSecretMessage()
+                }))
+                present(ac, animated: true)
+            }
             let ac = UIAlertController(title: "No biometry available", message: "Your device is not configured for biometric authentication", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
@@ -69,6 +97,12 @@ class ViewController: UIViewController {
         title = "Nothing to see here"
         
         navigationItem.rightBarButtonItem = nil
+    }
+    
+    func showWrongPassword() {
+        let ac = UIAlertController(title: "Wrong password", message: "Password you entered was wrong. Please try again.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
