@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class ViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -15,6 +16,29 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Identify yourself to have access to your people."
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] (success, authenticationError) in
+                DispatchQueue.main.async {
+                    if success {
+                        self?.load()
+                    } else {
+                        let ac = UIAlertController(title: "Authentication failed!", message: "You could not be verified. Please try again later.", preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self?.present(ac, animated: true)
+                    }
+                }
+            }
+        } else {
+            print("No authentication available!")
+        }
+    }
+    
+    func load() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
         
         let defaults = UserDefaults.standard
@@ -22,6 +46,7 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
             let decoder = JSONDecoder()
             do {
                 people = try decoder.decode([Person].self, from: savedPeople)
+                collectionView.reloadData()
             } catch {
                 print("Failed to load people")
             }
@@ -109,6 +134,7 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self, weak person] (action) in
             guard let name = ac.textFields?[0].text else { return }
             person?.name = name
+            self?.save()
             self?.collectionView.reloadItems(at: [path])
         }))
         
