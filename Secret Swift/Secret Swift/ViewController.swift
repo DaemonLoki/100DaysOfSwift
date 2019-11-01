@@ -55,6 +55,8 @@ class ViewController: UIViewController {
         secret.isHidden = false
         title = "Secret stuff"
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(saveSecretMessage))
+        
         secret.text = KeychainWrapper.standard.string(forKey: messageKey) ?? ""
     }
     
@@ -65,6 +67,8 @@ class ViewController: UIViewController {
         secret.resignFirstResponder()
         secret.isHidden = true
         title = "Nothing to see here"
+        
+        navigationItem.rightBarButtonItem = nil
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
