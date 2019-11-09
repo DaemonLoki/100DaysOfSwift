@@ -17,6 +17,12 @@ enum CollisionTypes: UInt32 {
 
 class GameScene: SKScene {
     
+    var player1: SKSpriteNode!
+    var player2: SKSpriteNode!
+    var banana: SKSpriteNode!
+    
+    var currentPlayer = 1
+    
     var buildings = [BuildingNode]()
     
     weak var viewController: GameViewController!
@@ -41,6 +47,32 @@ class GameScene: SKScene {
             
             buildings.append(building)
         }
+    }
+    
+    func createPlayers() {
+        player1 = createPlayerNode(named: "player1")
+        
+        let player1Building = buildings[1]
+        player1.position = CGPoint(x: player1Building.position.x, y: player1Building.position.y + ((player1Building.size.height + player1.size.height) / 2))
+        addChild(player1)
+        
+        player2 = createPlayerNode(named: "player2")
+        
+        let player2Building = buildings[1]
+        player2.position = CGPoint(x: player2Building.position.x, y: player2Building.position.y + ((player2Building.size.height + player2.size.height) / 2))
+        addChild(player2)
+    }
+    
+    func createPlayerNode(named playerName: String) -> SKSpriteNode {
+        let playerNode = SKSpriteNode(imageNamed: "player")
+        playerNode.name = playerName
+        playerNode.physicsBody = SKPhysicsBody(circleOfRadius: playerNode.size.width / 2)
+        playerNode.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
+        playerNode.physicsBody?.collisionBitMask = CollisionTypes.banana.rawValue
+        playerNode.physicsBody?.contactTestBitMask = CollisionTypes.banana.rawValue
+        playerNode.physicsBody?.isDynamic = false
+        
+        return playerNode
     }
     
     func launch(angle: Int, velocity: Int) {
