@@ -15,6 +15,8 @@
 		AC1ECC44236EB970000046CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1ECC43236EB970000046CF /* Assets.xcassets */; };
 		AC1ECC47236EB970000046CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1ECC45236EB970000046CF /* LaunchScreen.storyboard */; };
 		AC1ECC4F236EBA7F000046CF /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1ECC4E236EBA7F000046CF /* BuildingNode.swift */; };
+		AC9A21792376BBAD0025F7FD /* hitBuilding.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC9A21772376BBAC0025F7FD /* hitBuilding.sks */; };
+		AC9A217A2376BBAD0025F7FD /* hitPlayer.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC9A21782376BBAD0025F7FD /* hitPlayer.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		AC1ECC46236EB970000046CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC1ECC48236EB970000046CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1ECC4E236EBA7F000046CF /* BuildingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
+		AC9A21772376BBAC0025F7FD /* hitBuilding.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitBuilding.sks; sourceTree = "<group>"; };
+		AC9A21782376BBAD0025F7FD /* hitPlayer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitPlayer.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				AC1ECC3C236EB96F000046CF /* GameScene.swift */,
 				AC1ECC4E236EBA7F000046CF /* BuildingNode.swift */,
 				AC1ECC3E236EB96F000046CF /* GameViewController.swift */,
+				AC9A21772376BBAC0025F7FD /* hitBuilding.sks */,
+				AC9A21782376BBAD0025F7FD /* hitPlayer.sks */,
 				AC1ECC40236EB96F000046CF /* Main.storyboard */,
 				AC1ECC43236EB970000046CF /* Assets.xcassets */,
 				AC1ECC45236EB970000046CF /* LaunchScreen.storyboard */,
@@ -132,6 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC1ECC42236EB96F000046CF /* Main.storyboard in Resources */,
+				AC9A21792376BBAD0025F7FD /* hitBuilding.sks in Resources */,
+				AC9A217A2376BBAD0025F7FD /* hitPlayer.sks in Resources */,
 				AC1ECC39236EB96F000046CF /* GameScene.sks in Resources */,
 				AC1ECC44236EB970000046CF /* Assets.xcassets in Resources */,
 				AC1ECC47236EB970000046CF /* LaunchScreen.storyboard in Resources */,
