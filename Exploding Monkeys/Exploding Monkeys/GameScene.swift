@@ -21,6 +21,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player2: SKSpriteNode!
     var banana: SKSpriteNode!
     
+    static var player1Score = 0
+    static var player2Score = 0
+    
     var currentPlayer = 1
     
     var buildings = [BuildingNode]()
@@ -32,6 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         createBuildings()
         createPlayers()
+        createScoreLabels()
         
         physicsWorld.contactDelegate = self
     }
@@ -92,6 +96,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let player2Building = buildings[buildings.count - 2]
         player2.position = CGPoint(x: player2Building.position.x, y: player2Building.position.y + ((player2Building.size.height + player2.size.height) / 2))
         addChild(player2)
+    }
+    
+    func createScoreLabels() {
+        let player1ScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        player1ScoreLabel.horizontalAlignmentMode = .left
+        player1ScoreLabel.fontSize = 40
+        player1ScoreLabel.text = "Player 1: \(GameScene.player1Score)"
+        player1ScoreLabel.zPosition = 2
+        addChild(player1ScoreLabel)
+        
+        player1ScoreLabel.position = CGPoint(x: 20, y: 680)
+        
+        let player2ScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        player2ScoreLabel.horizontalAlignmentMode = .right
+        player2ScoreLabel.fontSize = 40
+        player2ScoreLabel.text = "Player 2: \(GameScene.player2Score)"
+        player2ScoreLabel.zPosition = 2
+        addChild(player2ScoreLabel)
+        
+        player2ScoreLabel.position = CGPoint(x: 1000, y: 680)
     }
     
     func createPlayerNode(named playerName: String) -> SKSpriteNode {
@@ -179,20 +203,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(explosion)
         }
         
+        if player.name == "player2" {
+            GameScene.player1Score += 1
+        } else {
+            GameScene.player2Score += 1
+        }
+        
         player.removeFromParent()
         banana.removeFromParent()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let newGame = GameScene(size: self.size)
-            newGame.viewController = self.viewController
-            self.viewController.currentGame = newGame
-            
-            self.changePlayer()
-            newGame.currentPlayer = self.currentPlayer
-            
-            let transition = SKTransition.doorway(withDuration: 1.5)
-            self.view?.presentScene(newGame, transition: transition)
+            if GameScene.player1Score >= 3 {
+                self.showWinningLabel(for: "Player 1")
+            } else if GameScene.player2Score >= 3 {
+                self.showWinningLabel(for: "Player 2")
+            } else {
+                let newGame = GameScene(size: self.size)
+                newGame.viewController = self.viewController
+                self.viewController.currentGame = newGame
+                
+                self.changePlayer()
+                newGame.currentPlayer = self.currentPlayer
+                
+                let transition = SKTransition.doorway(withDuration: 1.5)
+                self.view?.presentScene(newGame, transition: transition)
+            }
         }
+    }
+    
+    func showWinningLabel(for playerName: String) {
+        let winningLabel = SKLabelNode(fontNamed: "Chalkduster")
+        winningLabel.horizontalAlignmentMode = .center
+        winningLabel.fontSize = 50
+        winningLabel.text = "Congratulations! \(playerName) won!"
+        winningLabel.zPosition = 2
+        addChild(winningLabel)
+        
+        winningLabel.position = CGPoint(x: 512, y: 400)
     }
     
     func changePlayer() {
