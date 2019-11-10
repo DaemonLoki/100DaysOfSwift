@@ -33,9 +33,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(hue: 0.669, saturation: 0.99, brightness: 0.67, alpha: 1)
         
+        let windStrength = Int.random(in: -10...10)
+        
         createBuildings()
         createPlayers()
-        createScoreLabels()
+        createInfoLabels(windStrength: windStrength)
+        
+        physicsWorld.gravity.dx = CGFloat(windStrength)
         
         physicsWorld.contactDelegate = self
     }
@@ -98,7 +102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(player2)
     }
     
-    func createScoreLabels() {
+    func createInfoLabels(windStrength: Int) {
         let player1ScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         player1ScoreLabel.horizontalAlignmentMode = .left
         player1ScoreLabel.fontSize = 40
@@ -116,6 +120,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(player2ScoreLabel)
         
         player2ScoreLabel.position = CGPoint(x: 1000, y: 670)
+        
+        let windLabel = SKLabelNode(fontNamed: "Chalkduster")
+        windLabel.horizontalAlignmentMode = .center
+        windLabel.fontSize = 40
+        windLabel.text = "Wind: \(windStrength)"
+        windLabel.zPosition = 2
+        addChild(windLabel)
+        
+        windLabel.position = CGPoint(x: 512, y: 670)
     }
     
     func createPlayerNode(named playerName: String) -> SKSpriteNode {
