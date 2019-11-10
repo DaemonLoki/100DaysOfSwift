@@ -106,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player1ScoreLabel.zPosition = 2
         addChild(player1ScoreLabel)
         
-        player1ScoreLabel.position = CGPoint(x: 20, y: 680)
+        player1ScoreLabel.position = CGPoint(x: 20, y: 670)
         
         let player2ScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         player2ScoreLabel.horizontalAlignmentMode = .right
@@ -115,7 +115,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player2ScoreLabel.zPosition = 2
         addChild(player2ScoreLabel)
         
-        player2ScoreLabel.position = CGPoint(x: 1000, y: 680)
+        player2ScoreLabel.position = CGPoint(x: 1000, y: 670)
     }
     
     func createPlayerNode(named playerName: String) -> SKSpriteNode {
