@@ -12,24 +12,52 @@ class CardCell: UICollectionViewCell {
     
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var cardBackgroundView: UIView!
+    @IBOutlet var cardPatternImageView: UIImageView!
     @IBOutlet var showContentView: UIView!
     
-    private var content: String?
+    private let animationDuration = 0.35
+    
     private var isContentHidden = true
     var isActive = true
     
+    private let patternRows = 5
+    private let patternColumns = 5
+    
     func configure(content: String, delayedBy delay: Double) {
-        self.content = content
-        self.textLabel.text = content
-        //self.contentView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        self.contentView.alpha = 0.0
+        // set view layouts
+        self.cardBackgroundView.layer.cornerRadius = 10
+        self.showContentView.layer.cornerRadius = 10
         
+        // set view contents
+        self.textLabel.text = content
+        self.drawCardPattern()
+        
+        // animate reveal
+        self.contentView.alpha = 0.0
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            UIView.animate(withDuration: 0.5, delay: delay, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
-                //self.contentView.transform = .identity
+            UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
                 self.contentView.alpha = 1
             })
         }
+    }
+    
+    private func drawCardPattern() {
+        let imageSize = self.cardPatternImageView.frame.size
+        let renderer = UIGraphicsImageRenderer(size: imageSize)
+        
+        let img = renderer.image { ctx in
+            ctx.cgContext.setFillColor(UIColor.bgRed.cgColor)
+            
+            let rectSize = 150 / patternRows
+            for row in 0..<patternRows {
+                for col in 0..<patternColumns {
+                    if (row + col) % 2 == 0 {
+                        ctx.cgContext.fill(CGRect(x: col * rectSize, y: row * rectSize, width: rectSize, height: rectSize))
+                    }
+                }
+            }
+        }
+        self.cardPatternImageView.image = img
     }
     
     func flip() {
@@ -41,18 +69,21 @@ class CardCell: UICollectionViewCell {
         let viewToShow: UIView = isContentHidden ? cardBackgroundView : showContentView
         
         viewToShow.isHidden = true
-        UIView.transition(with: viewToHide, duration: 1.0, options: transitionOptions, animations: {
+        UIView.transition(with: viewToHide, duration: animationDuration, options: transitionOptions, animations: {
             viewToHide.isHidden = true
         })
 
-        UIView.transition(with: viewToShow, duration: 0.35, options: transitionOptions, animations: {
+        UIView.transition(with: viewToShow, duration: animationDuration, options: transitionOptions, animations: {
             viewToShow.isHidden = false
         })
     }
     
     func deactivate() {
         isActive = false
-        self.contentView.alpha = 0.5
+        UIView.animate(withDuration: animationDuration) {
+            self.showContentView.alpha = 0.5
+            self.showContentView.backgroundColor = .bgGreen
+        }
     }
     
 }

@@ -16,6 +16,7 @@
 		AC98B247237FDA4400FE4212 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC98B246237FDA4400FE4212 /* CardCell.swift */; };
 		AC98B2492380081900FE4212 /* CardContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC98B2482380081900FE4212 /* CardContent.swift */; };
 		AC98B24B238018D100FE4212 /* Topics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC98B24A238018D100FE4212 /* Topics.swift */; };
+		AC98B24D23802CAA00FE4212 /* UIColor+Backgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC98B24C23802CAA00FE4212 /* UIColor+Backgrounds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AC98B246237FDA4400FE4212 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		AC98B2482380081900FE4212 /* CardContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContent.swift; sourceTree = "<group>"; };
 		AC98B24A238018D100FE4212 /* Topics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topics.swift; sourceTree = "<group>"; };
+		AC98B24C23802CAA00FE4212 /* UIColor+Backgrounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Backgrounds.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				AC98B23B237F5FD800FE4212 /* Assets.xcassets */,
 				AC98B23D237F5FD800FE4212 /* LaunchScreen.storyboard */,
 				AC98B240237F5FD800FE4212 /* Info.plist */,
+				AC98B24C23802CAA00FE4212 /* UIColor+Backgrounds.swift */,
 			);
 			path = Pairs;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC98B237237F5FD200FE4212 /* ViewController.swift in Sources */,
+				AC98B24D23802CAA00FE4212 /* UIColor+Backgrounds.swift in Sources */,
 				AC98B2492380081900FE4212 /* CardContent.swift in Sources */,
 				AC98B233237F5FD200FE4212 /* AppDelegate.swift in Sources */,
 				AC98B24B238018D100FE4212 /* Topics.swift in Sources */,
