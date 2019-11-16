@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yb8-3V-JR6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nM0-vm-fIS">
     <device id="ipad10_2" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
@@ -15,21 +15,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dWN-Bc-fGy">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="dWN-Bc-fGy">
                             <size key="itemSize" width="150" height="150"/>
+                            <size key="estimatedItemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="50" minY="50" maxX="50" maxY="50"/>
+                            <inset key="sectionInset" minX="80" minY="50" maxX="80" maxY="50"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCell" id="GBO-CR-yVK" customClass="CardCell" customModule="Pairs" customModuleProvider="target">
-                                <rect key="frame" x="50" y="50" width="150" height="50"/>
+                                <rect key="frame" x="80" y="50" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="QDT-rD-MkK">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sj-Ib-u5K">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG8-Xm-Hn0">
+                                                    <rect key="frame" x="59" y="64.5" width="32.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="DG8-Xm-Hn0" firstAttribute="centerY" secondItem="1sj-Ib-u5K" secondAttribute="centerY" id="LTj-wG-2Y1"/>
+                                                <constraint firstItem="DG8-Xm-Hn0" firstAttribute="centerX" secondItem="1sj-Ib-u5K" secondAttribute="centerX" id="QTw-ri-txQ"/>
+                                                <constraint firstAttribute="width" constant="150" id="Tyb-Cd-4Nz"/>
+                                                <constraint firstAttribute="height" constant="150" id="abf-Aw-BvE"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="1sj-Ib-u5K" secondAttribute="bottom" id="NXA-0C-Egs"/>
+                                        <constraint firstItem="1sj-Ib-u5K" firstAttribute="leading" secondItem="QDT-rD-MkK" secondAttribute="leading" id="Nfz-Kk-7le"/>
+                                        <constraint firstAttribute="trailing" secondItem="1sj-Ib-u5K" secondAttribute="trailing" id="TsH-Rf-q4x"/>
+                                        <constraint firstItem="1sj-Ib-u5K" firstAttribute="top" secondItem="QDT-rD-MkK" secondAttribute="top" id="po0-u0-EhQ"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
-                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="textLabel" destination="DG8-Xm-Hn0" id="lUM-CO-9gM"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
