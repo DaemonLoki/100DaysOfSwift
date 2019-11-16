@@ -22,6 +22,18 @@ struct Topics {
             ("Poland", "Warsaw"),
             ("Czech", "Prague"),
             ("South Africa", "Pretoria")
+        ],
+        "Superheroes": [
+            ("Superman", "Clark Kent"),
+            ("Batman", "Bruce Wayne"),
+            ("Spiderman", "Peter Parker"),
+            ("twostraws", "Paul Hudson"),
+            ("Deadpool", "Wade Wilson"),
+            ("Iron Man", "Tony Stark"),
+            ("Hulk", "Bruce Banner"),
+            ("Captain America", "Steve Rogers"),
+            ("Captain Marvel", "Carol Danvers"),
+            ("Black Widow", "Natasha Romanoff"),
         ]
     ]
     

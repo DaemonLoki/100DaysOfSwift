@@ -17,6 +17,7 @@ class CardCell: UICollectionViewCell {
     
     private let animationDuration = 0.35
     
+    private var needsToBeCreated = true
     private var isContentHidden = true
     var isActive = true
     
@@ -24,17 +25,31 @@ class CardCell: UICollectionViewCell {
     private let patternColumns = 5
     
     func configure(content: String, delayedBy delay: Double) {
-        // set view layouts
-        self.cardBackgroundView.layer.cornerRadius = 10
-        self.showContentView.layer.cornerRadius = 10
-        
         // set view contents
         self.textLabel.text = content
-        self.drawCardPattern()
-        
-        // animate reveal
+
+        // set starting status
+        if !isActive {
+            self.activate()
+        }
+
+        if needsToBeCreated {
+            // set view layouts
+            self.cardBackgroundView.layer.cornerRadius = 10
+            self.showContentView.layer.cornerRadius = 10
+
+            self.drawCardPattern()
+                   
+            // animate reveal
+            animateReveal(with: delay)
+            
+            needsToBeCreated.toggle()
+        }
+    }
+    
+    private func animateReveal(with delay: Double) {
         self.contentView.alpha = 0.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
                 self.contentView.alpha = 1
             })
@@ -63,7 +78,7 @@ class CardCell: UICollectionViewCell {
     func flip() {
         isContentHidden.toggle()
         
-        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight/*, .showHideTransitionViews*/]
+        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
         
         let viewToHide: UIView = isContentHidden ? showContentView : cardBackgroundView
         let viewToShow: UIView = isContentHidden ? cardBackgroundView : showContentView
@@ -76,6 +91,16 @@ class CardCell: UICollectionViewCell {
         UIView.transition(with: viewToShow, duration: animationDuration, options: transitionOptions, animations: {
             viewToShow.isHidden = false
         })
+    }
+    
+    func activate() {
+        self.isActive = true
+        self.isContentHidden = true
+        self.showContentView.alpha = 1.0
+        self.showContentView.backgroundColor = .systemBackground
+        
+        self.showContentView.isHidden = true
+        self.cardBackgroundView.isHidden = false
     }
     
     func deactivate() {

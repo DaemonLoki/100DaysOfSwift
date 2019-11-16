@@ -25,12 +25,33 @@ class ViewController: UICollectionViewController {
         title = "Pairs"
         
         loadCardContents(for: "Capitals")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Switch Topic", style: .plain, target: self, action: #selector(showTopicSheet(_:)))
+    }
+    
+    @objc func showTopicSheet(_ sender: UIBarButtonItem) {
+        let ac = UIAlertController(title: "Select Topic", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Capitals", style: .default, handler: { [weak self] (_) in
+            self?.loadCardContents(for: "Capitals", reloadGame: true)
+        }))
+        ac.addAction(UIAlertAction(title: "Superheroes", style: .default, handler: { [weak self] (_) in
+            self?.loadCardContents(for: "Superheroes", reloadGame: true)
+        }))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+        
+        if let popoverController = ac.popoverPresentationController {
+            popoverController.barButtonItem = sender
+        }
+        present(ac, animated: true)
     }
     
     func loadCardContents(for topic: String, reloadGame: Bool = false) {
+        title = "Pairs - \(topic)"
+        
         let topicCards = Topics.topic(named: topic)
         guard let cards = topicCards else { fatalError("Topic is not available") }
         
+        cardContents.removeAll()
         for (i, card) in cards.enumerated() {
             cardContents.append(CardContent(textContent: card.0, index: i))
             cardContents.append(CardContent(textContent: card.1, index: i))
@@ -39,12 +60,15 @@ class ViewController: UICollectionViewController {
         cardContents.shuffle()
         
         if reloadGame {
-            pairsToMatch = 10
-            cardShowDelay = 0.0
-            takingUserInput = true
-            collectionView.reloadData()
+            reloadGameUI()
         }
-        
+    }
+    
+    private func reloadGameUI() {
+        pairsToMatch = 10
+        cardShowDelay = 0.0
+        takingUserInput = true
+        collectionView.reloadData()
     }
 
 }
