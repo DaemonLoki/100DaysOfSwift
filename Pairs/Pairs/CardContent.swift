@@ -8,6 +8,7 @@
 
 import Foundation
 
-struct CardContent: Equatable {
+struct CardContent {
     let textContent: String
+    let index: Int
 }

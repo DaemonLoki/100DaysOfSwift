@@ -14,7 +14,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="X9H-pK-GY9">
                         <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="dWN-Bc-fGy">
                             <size key="itemSize" width="150" height="150"/>
                             <size key="estimatedItemSize" width="150" height="150"/>
@@ -30,17 +30,25 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sj-Ib-u5K">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ng-7S-E7f">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="150" id="Xrs-sD-Ogx"/>
+                                                <constraint firstAttribute="height" constant="150" id="sca-3b-3D6"/>
+                                            </constraints>
+                                        </view>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sj-Ib-u5K">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG8-Xm-Hn0">
-                                                    <rect key="frame" x="59" y="64.5" width="32.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="57" y="64.5" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstItem="DG8-Xm-Hn0" firstAttribute="centerY" secondItem="1sj-Ib-u5K" secondAttribute="centerY" id="LTj-wG-2Y1"/>
                                                 <constraint firstItem="DG8-Xm-Hn0" firstAttribute="centerX" secondItem="1sj-Ib-u5K" secondAttribute="centerX" id="QTw-ri-txQ"/>
@@ -50,13 +58,19 @@
                                         </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="3Ng-7S-E7f" firstAttribute="top" secondItem="QDT-rD-MkK" secondAttribute="top" id="2ea-kQ-v9J"/>
                                         <constraint firstAttribute="bottom" secondItem="1sj-Ib-u5K" secondAttribute="bottom" id="NXA-0C-Egs"/>
                                         <constraint firstItem="1sj-Ib-u5K" firstAttribute="leading" secondItem="QDT-rD-MkK" secondAttribute="leading" id="Nfz-Kk-7le"/>
                                         <constraint firstAttribute="trailing" secondItem="1sj-Ib-u5K" secondAttribute="trailing" id="TsH-Rf-q4x"/>
+                                        <constraint firstAttribute="trailing" secondItem="3Ng-7S-E7f" secondAttribute="trailing" id="evX-6K-u9A"/>
+                                        <constraint firstItem="3Ng-7S-E7f" firstAttribute="leading" secondItem="QDT-rD-MkK" secondAttribute="leading" id="ffX-YN-uDs"/>
+                                        <constraint firstAttribute="bottom" secondItem="3Ng-7S-E7f" secondAttribute="bottom" id="gzP-4s-4fO"/>
                                         <constraint firstItem="1sj-Ib-u5K" firstAttribute="top" secondItem="QDT-rD-MkK" secondAttribute="top" id="po0-u0-EhQ"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
+                                    <outlet property="cardBackgroundView" destination="3Ng-7S-E7f" id="gLY-4K-zxF"/>
+                                    <outlet property="showContentView" destination="1sj-Ib-u5K" id="WVs-ot-uHA"/>
                                     <outlet property="textLabel" destination="DG8-Xm-Hn0" id="lUM-CO-9gM"/>
                                 </connections>
                             </collectionViewCell>
