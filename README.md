@@ -16,12 +16,16 @@ Below you can find the list of projects:
 
 ## 1. [Storm Viewer](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Storm%20Viewer) (Days 16 - 18)
 
+_Creating a simple image viewer with a detail page._
+
 * Working with `FileManager`
 * Loading resources from Storage (`Bundle`)
 * Creating `TableView`s and `TableViewCell`s in Storyboards
 * Simple Navigation
 
 ## 2. [Guess the Flag](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Guess%20the%20Flag) (Days 19 - 22)
+
+_Developing a flag guessing game which asks the user to guess contries of different flags._
 
 * Auto Layout in Interface Builder
 * `UIButton`s and `Layer`s
@@ -30,6 +34,8 @@ Below you can find the list of projects:
 
 ## 3. [Fun with Flags](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Fun%20with%20Flags) (Milestone - Day 23)
 
+_Allowing user to browse flags and show details for the country in a detail page._
+
 * Custom `UITableView` and `UITableViewCell`s
 * `UIActivityViewController` and sharing data
 * dequeuing `TableViewCell`s
@@ -37,11 +43,15 @@ Below you can find the list of projects:
 
 ## 4. [Easy Browser](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Easy%20Browser) (Days 24 - 26)
 
+_Creating a basic browser rendering custom websites that the user can select._
+
 * Intro to `WebKit` and `WKWebView`
 * Using `.actionSheet` presentation style of `UIAlertController`
 * showing progress using `UIToolbar` and `UIProgressView`
 
 ## 5. [Word Scramble](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Word%20Scramble) (Days 27 - 29)
+
+_Word game implemented in `UIKit` making the user create own words from given strings._
 
 * Capture lists: `weak` vs. `unowned` vs. `strong`
 * Reading `contentsOf` from disk
@@ -50,16 +60,22 @@ Below you can find the list of projects:
 
 ## 6. [Auto Layout](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Awesome%20Auto%20Layout) (Days 30 - 31)
 
+_Playing around with Auto Layout in code with anchors and visual format language._
+
 * Advanced Auto Layout (e.g. `aspectRatio`, `anchors`)
 * `Visual Format Language` (VFL) 
 
 ## [Shopping List](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/ShoppingList) (Milestone - Day 32)
+
+_Building up a shopping list app with option to share the list._
 
 * more `String` manipulations and slicing
 * inserting and deleting rows in `UITableView`s
 * sharing lists with `UIActivityViewController`
 
 ## 7. [Whitehouse Petitions](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Whitehouse%20Petitions) (Days 33 - 35)
+
+_Loading data for current petitions at the White House and displaying statistics about it._
 
 * `UITabBarController`
 * parsing JSON with `Codable`
@@ -68,11 +84,15 @@ Below you can find the list of projects:
 
 ## 8. [Swifty Words](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Swifty%20Words) (Days 36 - 38)
 
+_Little game creating different words and allowing the user to combine different words together._
+
 * creating UI in programmatically with Auto Layout
 * Array and `String` manipulations like `components(separatedBy:)` and `joined(separator:)`
 * using property observers like `didSet`
 
 ## 9. [Grand Central Dispatch](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Grand%20Central%20Dispatch) (Days 39 - 40)
+
+_Introduction to background processing and taking computation away from the main thread._
 
 * `GCD` basics and relieving the main thread 
 * asynchronous code execution
@@ -80,17 +100,23 @@ Below you can find the list of projects:
 
 ## [Hangman](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Hangman) (Milestone - Day 41)
 
+_Hangman clone created with `UIKit`._
+
 * `Character` as elements of `String`
 * loading data in backgorund using `GCD`
 * creating a game in `UIKit`
 
 ## 10. [Names to Faces](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Names%20to%20Faces) (Days 42 - 44)
 
+_Load people's images and assign names to them that get saved._
+
 * using `UICollectionView` with `UICollectionViewCell`s
 * importing photos with `UIImagePickerController`
 * sublassing `NSObject`
 
 ## 11. [Pachinko](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Pachinko) (Days 45 - 47)
+
+_SpriteKit game challenging users to collect points and destroy objects._
 
 * intro to `SpriteKit`
 * learning about elements like `SKSpriteNode`, `SKLabelNode`, `SKPhysicsBody` and `SKEmitterNode`
@@ -99,11 +125,15 @@ Below you can find the list of projects:
 
 ## UserDefaults (Days 48 - 49)
 
+_How to save and load data from `UserDefaults`._
+
 * saving data in `UserDefaults`
 * using `NSCoding` in combination with `NSKeyedArchiver` and `NSKeyedUnarchiver`
 * using `JSONEncoder` and `JSONDecoder` with `Codable`
 
 ## [Capture Images](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Capture%20Images) (Milestone - Day 50)
+
+_Capturing images and storing them using `Codable`._
 
 * capturing images from the camera
 * storing user data in `UserDefaults`
@@ -116,11 +146,15 @@ Below you can find the list of projects:
 
 ## 13. [Instafilter](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Instafilter) (Days 52 - 54)
 
+_Image manipulation app that makes use of iOS built-in filters with `CoreImage`._
+
 * using `UISlider` in the UI
 * applying filters using `CoreImage` and `CIFilter`/`CIContext`
 * writing images to the library using `UIImageWriteToSavedPhotosAlbum()`
 
 ## 14. [Whack-a-Penguin](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Whack-A-Penguin) (Days 55 - 56)
+
+_SpriteKit game were users need to be fast to hit disappearing penguins._
 
 * more `SpriteKit` with `SKCropNode` and custom `SKNode`s with `maskNode`s
 * action sequences with `SKAction`
@@ -128,11 +162,15 @@ Below you can find the list of projects:
 
 ## 15. [Animation](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Animation) (Days 57 - 58)
 
+_Introduction to different animation types in `UIKit`._
+
 * using simple animations with `UIView.animate(withDuration:)`
 * applying `CGAffineTransform` with scaling, rotating and translating views
 * using spring, velocity and damping for more lively animations
 
 ## [Country Info](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Country%20Info) (Milestone - Day 59)
+
+_Showing infos of different countries and allowing users to share facts about them._
 
 * showing JSON encoded information with `Codable`
 * providing cool UI with navigation
