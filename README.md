@@ -14,83 +14,83 @@ way, I just think it's highly recommendable).
 
 Below you can find the list of projects:
 
-## 1. Storm Viewer (Days 16 - 18)
+## 1. [Storm Viewer](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Storm%20Viewer) (Days 16 - 18)
 
 * Working with `FileManager`
 * Loading resources from Storage (`Bundle`)
 * Creating `TableView`s and `TableViewCell`s in Storyboards
 * Simple Navigation
 
-## 2. Guess the Flag (Days 19 - 22)
+## 2. [Guess the Flag](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Guess%20the%20Flag) (Days 19 - 22)
 
 * Auto Layout in Interface Builder
 * `UIButton`s and `Layer`s
 * Handling user input for `UIButton`s
 * `UIAlertController`
 
-## 3. Fun with Flags (Milestone - Day 23)
+## 3. [Fun with Flags](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Fun%20with%20Flags) (Milestone - Day 23)
 
 * Custom `UITableView` and `UITableViewCell`s
 * `UIActivityViewController` and sharing data
 * dequeuing `TableViewCell`s
 * repetition of navigation
 
-## 4. Easy Browser (Days 24 - 26)
+## 4. [Easy Browser](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Easy%20Browser) (Days 24 - 26)
 
 * Intro to `WebKit` and `WKWebView`
 * Using `.actionSheet` presentation style of `UIAlertController`
 * showing progress using `UIToolbar` and `UIProgressView`
 
-## 5. Word Scramble (Days 27 - 29)
+## 5. [Word Scramble](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Word%20Scramble) (Days 27 - 29)
 
 * Capture lists: `weak` vs. `unowned` vs. `strong`
 * Reading `contentsOf` from disk
 * Receiving text input in `UIAlertController`
 * Checking text with `UITextChecker` and `String` manipulations
 
-## 6. Auto Layout (Days 30 - 31)
+## 6. [Auto Layout](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Awesome%20Auto%20Layout) (Days 30 - 31)
 
 * Advanced Auto Layout (e.g. `aspectRatio`, `anchors`)
 * `Visual Format Language` (VFL) 
 
-## Shopping List (Milestone - Day 32)
+## [Shopping List](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/ShoppingList) (Milestone - Day 32)
 
 * more `String` manipulations and slicing
 * inserting and deleting rows in `UITableView`s
 * sharing lists with `UIActivityViewController`
 
-## 7. Whitehouse Petitions (Days 33 - 35)
+## 7. [Whitehouse Petitions](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Whitehouse%20Petitions) (Days 33 - 35)
 
 * `UITabBarController`
 * parsing JSON with `Codable`
 * rendering HTML with `loadHTMLString`
 * using `didFinishLaunchingWithOptions` in `AppDelegate`
 
-## 8. 7 Swifty Words (Days 36 - 38)
+## 8. [Swifty Words](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Swifty%20Words) (Days 36 - 38)
 
 * creating UI in programmatically with Auto Layout
 * Array and `String` manipulations like `components(separatedBy:)` and `joined(separator:)`
 * using property observers like `didSet`
 
-## 9. Grand Central Dispatch (Days 39 - 40)
+## 9. [Grand Central Dispatch](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Grand%20Central%20Dispatch) (Days 39 - 40)
 
 * `GCD` basics and relieving the main thread 
 * asynchronous code execution
 * updating UI from other thread using `performSelector(onMainThread:)`
 
-## Hangman (Milestone - Day 41)
+## [Hangman](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Hangman) (Milestone - Day 41)
 
 * `Character` as elements of `String`
 * loading data in backgorund using `GCD`
 * creating a game in `UIKit`
 
-## 10. Names to Faces (Days 42 - 44)
+## 10. [Names to Faces](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Names%20to%20Faces) (Days 42 - 44)
 
 * using `UICollectionView` with `UICollectionViewCell`s
 * importing photos with `UIImagePickerController`
 * sublassing `NSObject`
 
-## 11. Pachinko (Days 45 - 47)
+## 11. [Pachinko](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Pachinko) (Days 45 - 47)
 
 * intro to `SpriteKit`
 * learning about elements like `SKSpriteNode`, `SKLabelNode`, `SKPhysicsBody` and `SKEmitterNode`
@@ -103,7 +103,7 @@ Below you can find the list of projects:
 * using `NSCoding` in combination with `NSKeyedArchiver` and `NSKeyedUnarchiver`
 * using `JSONEncoder` and `JSONDecoder` with `Codable`
 
-## Capture Images (Milestone - Day 50)
+## [Capture Images](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Capture%20Images) (Milestone - Day 50)
 
 * capturing images from the camera
 * storing user data in `UserDefaults`
@@ -114,31 +114,31 @@ Below you can find the list of projects:
 * [Elements of Functional Programming](https://www.youtube.com/watch?v=OgU8d_E1K14)
 * [Teaching Swift at Scale](https://vimeo.com/291590798)
 
-## 13. Instafilter (Days 52 - 54)
+## 13. [Instafilter](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Instafilter) (Days 52 - 54)
 
 * using `UISlider` in the UI
 * applying filters using `CoreImage` and `CIFilter`/`CIContext`
 * writing images to the library using `UIImageWriteToSavedPhotosAlbum()`
 
-## 14. Whack-a-Penguin (Days 55 - 56)
+## 14. [Whack-a-Penguin](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Whack-A-Penguin) (Days 55 - 56)
 
 * more `SpriteKit` with `SKCropNode` and custom `SKNode`s with `maskNode`s
 * action sequences with `SKAction`
 * using `zPosition` for stacking `SKNode`s
 
-## 15. Animation (Days 57 - 58)
+## 15. [Animation](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Animation) (Days 57 - 58)
 
 * using simple animations with `UIView.animate(withDuration:)`
 * applying `CGAffineTransform` with scaling, rotating and translating views
 * using spring, velocity and damping for more lively animations
 
-## Country Info (Milestone - Day 59)
+## [Country Info](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Country%20Info) (Milestone - Day 59)
 
 * showing JSON encoded information with `Codable`
 * providing cool UI with navigation
 * sharing country facts with `UIActivityViewController`
 
-## 16. Capital Cities (Days 60 - 61)
+## 16. [Capital Cities](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Capital%20Cities) (Days 60 - 61)
 
 _Creating a map with interesting events pinned that show more information on click._
 
@@ -146,7 +146,7 @@ _Creating a map with interesting events pinned that show more information on cli
 * using `MKPinAnnotationView`s
 * changing map types with e.g. `.satellite`
 
-## 17. Space Race (Days 62 - 63)
+## 17. [Space Race](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Space%20Race) (Days 62 - 63)
 
 _SpriteKit game that shows spaceship and needs to avoid hitting space objects._
 
@@ -160,14 +160,14 @@ _Introduction to debugging iOS apps with Xcode._
 * debugging with `print()` vs. `assert()` vs. breakpoints
 * view debugging of the UI with *Capture View Hierarchy*
 
-## 18. Shooting Gallery (Milestone - Day 66)
+## 18. [Shooting Gallery](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Shooting%20Gallery) (Milestone - Day 66)
 
 _Creating a SpriteKit game similar to a shooting gallery._
 
 * auto-creating differently colored and typed `SKNode`s
 * moving nodes and handling click targets
 
-## 19. JavaScript Injection (Days 67 - 69)
+## 19. [JavaScript Injection](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/JavaScript%20Injection) (Days 67 - 69)
 
 _Creating a Safari Extension with the option to run custom JavaScript._
 
@@ -175,7 +175,7 @@ _Creating a Safari Extension with the option to run custom JavaScript._
 * registering as a Safari extension
 * editing multi-line text with `UITextView`
 
-## 20. Fireworks Night (Days 70 - 71)
+## 20. [Fireworks Night](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Fireworks%20Night) (Days 70 - 71)
 
 _SpriteKit game showing fireworks that the user needs to destroy._
 
@@ -183,7 +183,7 @@ _SpriteKit game showing fireworks that the user needs to destroy._
 * creating paths using `UIBezierPath`s and `orientToPath`
 * detecting swipe gestures to destroy multiple `SKNode`s at once
 
-## 21. Local Notifications (Days 72 - 73)
+## 21. [Local Notifications](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Local%20Notifications) (Days 72 - 73)
 
 _Using local notifications in an app._
 
@@ -199,7 +199,7 @@ _Cloning the iOS Notes app as closely as possible._
 * allow sharing with `UIActivityViewController`
 * keep editing history
 
-## 22. Detect-a-Beacon (Days 75 - 76)
+## 22. [Detect-a-Beacon](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Detect-A-Beacon) (Days 75 - 76)
 
 _Use iBeacons to detect how far away objects are from the user._
 
@@ -207,7 +207,7 @@ _Use iBeacons to detect how far away objects are from the user._
 * detecting iBeacons using `CLBeaconRegion` 
 * measuring proximity with `CLProximity`
 
-## 23. Swifty Ninja (Days 77 - 79)
+## 23. [Swifty Ninja](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/SwiftyNinja) (Days 77 - 79)
 
 _Fruit Ninja clone with SpriteKit._
 
@@ -215,14 +215,14 @@ _Fruit Ninja clone with SpriteKit._
 * creating action with `CGPath` and `UIBezierPath`s
 * playing sound with `SKAction` and `AVAudioPlayer`
 
-## 24. Swift Strings (Days 80 - 81)
+## 24. [Swift Strings](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/SwiftStrings.playground) (Days 80 - 81)
 
 _How to use `NSAttributedString` with labels and text views._
 
 * how to work with `String`s in Swift as they are not arrays
 * formatting `String`s with `NSAttributedString`
 
-## Swift language extensions (Milestone - Day 82)
+## [Swift language extensions](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Extensions_Milestone_Challenges.playground) (Milestone - Day 82)
 
 _Creating different language extensions that make it easier to use the features they implement._
 
@@ -230,7 +230,7 @@ _Creating different language extensions that make it easier to use the features 
 * adding a `times()` method to `Int` that runs a closure as many times
 * provide a `remove(item:)` method for `Array`s with the `Comparable` constraint
 
-## 25. Selfie Share (Days 83 - 84)
+## 25. [Selfie Share](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Selfie%20Share) (Days 83 - 84)
 
 _Sharing selfies with multipeer connectivity._
 
@@ -238,7 +238,7 @@ _Sharing selfies with multipeer connectivity._
 * identifying users with `MCPeerID` and looking for others with `MCAdvertiserAssistant` and `MCBrowserViewController`
 * sending data over the peer network and showing it in a `UICollectionView`
 
-## 26. Marble Maze (Days 85 - 87)
+## 26. [Marble Maze](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Marble%20Maze) (Days 85 - 87)
 
 _Creating a rolling ball game for iPad with use of accelerometer._
 
@@ -247,7 +247,7 @@ _Creating a rolling ball game for iPad with use of accelerometer._
 * runnign code only in simulator with `#if targetEnvironment(simulator)`
 * detecting contacting with collisions
 
-## 27. Core Graphics (Days 88 - 89)
+## 27. [Core Graphics](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Core%20Graphics) (Days 88 - 89)
 
 _Using `CoreGraphics` to draw directly to the screen._
 
@@ -256,7 +256,7 @@ _Using `CoreGraphics` to draw directly to the screen._
 * drawing rectangles, ellipses, checkerboards, transforms and lines
 * drawing images and text directly on the screen
 
-## Meme Generator (Milestone - Day 90)
+## [Meme Generator](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Meme%20Generator) (Milestone - Day 90)
 
 _Creating a meme generating app that draws user created text on user selected images._
 
@@ -271,7 +271,7 @@ _Working through a custom CoreGraphics playground from Paul to practice drawing.
 * getting more practice in drawing different shapes
 * creating flags and checkerboards and icons from scratch with `CoreGraphics`
 
-## 28. Secret Swift (Days 92 - 93)
+## 28. [Secret Swift](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Secret%20Swift) (Days 92 - 93)
 
 _Save data using the keychain and limiting access with biometric authentication._
 
@@ -279,7 +279,7 @@ _Save data using the keychain and limiting access with biometric authentication.
 * using `NotificationCenter` to get notified when app enters the background
 * using biometric authentication using Touch ID or Face ID with the `LocalAuthentication` framework
 
-## 29. Exploding Monkeys (Days 94 - 96)
+## 29. [Exploding Monkeys](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Exploding%20Monkeys) (Days 94 - 96)
 
 _SpriteKit game using `CoreGraphics` and dynamic level creation and physics effects._
 
@@ -296,7 +296,7 @@ _Using Instruments in Xcode to detect slow running code, incorrect usage of main
 * how to effectively draw shadows by adding a `shadowPath` with `UIBezierPath`
 * analyzing and fixing object allocations (by dequeuing `UITableViewCell`s with *Allocations* tool
 
-## Pairs (Milestone - Day 99)
+## [Pairs](https://github.com/DaemonLoki/100DaysOfSwift/tree/master/Pairs) (Milestone - Day 99)
 
 _Creating a memory game in UIKit with fancy animations and different topics and content._
 
