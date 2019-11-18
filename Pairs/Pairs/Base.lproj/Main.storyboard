@@ -61,7 +61,6 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="DG8-Xm-Hn0" secondAttribute="trailing" constant="8" id="5ED-CC-P3j"/>
                                                 <constraint firstItem="DG8-Xm-Hn0" firstAttribute="centerY" secondItem="1sj-Ib-u5K" secondAttribute="centerY" id="LTj-wG-2Y1"/>
-                                                <constraint firstItem="DG8-Xm-Hn0" firstAttribute="centerX" secondItem="1sj-Ib-u5K" secondAttribute="centerX" id="QTw-ri-txQ"/>
                                                 <constraint firstAttribute="width" constant="140" id="Tyb-Cd-4Nz"/>
                                                 <constraint firstItem="DG8-Xm-Hn0" firstAttribute="leading" secondItem="1sj-Ib-u5K" secondAttribute="leading" constant="8" id="Z98-EK-8WI"/>
                                                 <constraint firstAttribute="height" constant="140" id="abf-Aw-BvE"/>
